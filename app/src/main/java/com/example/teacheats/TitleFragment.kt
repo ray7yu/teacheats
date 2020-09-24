@@ -1,19 +1,16 @@
 package com.example.teacheats
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.setFragmentResult
 import androidx.navigation.findNavController
 import com.example.teacheats.databinding.FragmentTitleBinding
 import java.io.File
@@ -22,8 +19,20 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class TitleFragment : Fragment() {
-    private val REQUEST_IMAGE_CAPTURE = 1
-    private val REQUEST_TAKE_PHOTO = 1
+    //Takes picture and has callback for result
+    private val getPicture =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+            if (isSuccess) {
+                val newBundle = Bundle()
+                newBundle.putString("photoPath", currentPhotoPath)
+                Log.d("photoPath", currentPhotoPath)
+                view?.findNavController()
+                    ?.navigate(R.id.action_titleFragment_to_resultFragment, newBundle)
+            } else {
+                Log.d("Error", "Error")
+            }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,16 +49,15 @@ class TitleFragment : Fragment() {
         binding.helpButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_titleFragment_to_helpFragment)
         }
-        binding.startButton.setOnClickListener { view: View ->
-            dispatchTakePictureIntent()
-            setFragmentResult("requestKey", bundleOf("bundleKey" to currentPhotoPath))
-            view.findNavController().navigate(R.id.action_titleFragment_to_resultFragment)
+        binding.startButton.setOnClickListener {
+            takeImage()
         }
         return binding.root
     }
 
     lateinit var currentPhotoPath: String
 
+    //Creates a file and filepath for the image
     @Throws(IOException::class)
     private fun createImageFile(): File {
         // Creates image file name
@@ -65,29 +73,22 @@ class TitleFragment : Fragment() {
         }
     }
 
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            //ensure that there's a camera activity to handle the intent
-            activity?.packageManager?.let {
-                takePictureIntent.resolveActivity(it)?.also {
-                    // Create the File where the photo should go
-                    val photoFile: File? = try {
-                        createImageFile()
-                    } catch (ex: IOException) {
-                        // Error occurred while creating the File
-                        Log.d("Error", "Error")
-                        null
-                    }
-                    // Continue only if the File was successfully created
-                    photoFile?.also {
-                        val photoURI: Uri = FileProvider.getUriForFile(requireActivity(), "com.example.android.fileprovider", it)
-                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-//                        REQUEST_TAKE_PHOTO
-                        Log.d("Picture", "is working")
-                        startActivity(takePictureIntent)
-                    }
-                }
-            }
+    //Calls function to creates file and calls function to take picture
+    private fun takeImage() {
+        val photoFile: File? = try {
+            createImageFile()
+        } catch (ex: IOException) {
+            // Error occurred while creating the File
+            Log.d("Error", "Error")
+            null
+        }
+        photoFile?.also {
+            val photoURI: Uri = FileProvider.getUriForFile(
+                requireActivity(),
+                "com.example.android.fileprovider",
+                it
+            )
+            getPicture.launch(photoURI)
         }
     }
 }

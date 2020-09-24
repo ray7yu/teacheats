@@ -31,6 +31,10 @@
         android:name="com.example.teacheats.ResultFragment"
         android:label="ResultFragment"
         tools:layout="@layout/fragment_result">
+        <argument
+            android:name="photoPath"
+            app:nullable="true"
+            app:argType="string" />
         <action
             android:id="@+id/action_resultFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
