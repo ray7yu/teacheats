@@ -1,6 +1,7 @@
 package com.example.teacheats
 
 import android.net.Uri
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -12,14 +13,21 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.clarifai.channel.ClarifaiChannel
+import com.clarifai.credentials.ClarifaiCallCredentials
+import com.clarifai.grpc.api.*
+import com.clarifai.grpc.api.status.StatusCode
 import com.example.teacheats.databinding.FragmentTitleBinding
+import io.grpc.Channel
 import java.io.File
 import java.io.IOException
+import java.lang.ref.WeakReference
 import java.text.SimpleDateFormat
 import java.util.*
 
 class TitleFragment : Fragment() {
     //Takes picture and has callback for result
+    var apiResult : PostWorkflowResultsResponse? = null
     private val getPicture =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
@@ -51,6 +59,8 @@ class TitleFragment : Fragment() {
         }
         binding.startButton.setOnClickListener {
             takeImage()
+            val apiCall: Clarifai = Clarifai(getApiSecret())
+            apiCall.execute("Hi")
         }
         return binding.root
     }
@@ -91,4 +101,62 @@ class TitleFragment : Fragment() {
             getPicture.launch(photoURI)
         }
     }
+
+    companion object {
+        //Replace first parameter in async task with bitmap
+        class Clarifai(private val apiKey: String) : AsyncTask<String, String, Boolean>() {
+            override fun onPreExecute() {
+                //Move to spinner
+            }
+
+            override fun doInBackground(vararg params: String?): Boolean {
+                val channel: Channel = ClarifaiChannel.INSTANCE.jsonChannel;
+                val stub = V2Grpc.newBlockingStub(channel)
+                    .withCallCredentials(ClarifaiCallCredentials(apiKey))
+                val postWorkflowResultsResponse = stub.postWorkflowResults(
+                    PostWorkflowResultsRequest.newBuilder()
+                        .setWorkflowId("Food")
+                        .addInputs(
+                            Input.newBuilder().setData(
+                                Data.newBuilder().setImage(
+                                    Image.newBuilder().setUrl(
+                                        "https://samples.clarifai.com/metro-north.jpg"
+                                    )
+                                )
+                            )
+                        )
+                        .build()
+                )
+                if (postWorkflowResultsResponse.status.code != StatusCode.SUCCESS) {
+                    println("Post workflow results failed, status: " + postWorkflowResultsResponse.status)
+                    return false
+//                    throw java.lang.RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.status)
+                }
+
+                val results = postWorkflowResultsResponse.getResults(0)
+
+                for (output in results.outputsList) {
+                    val model: Model = output.model
+                    println(
+                        "Predicted concepts for the model `" + model.name.toString() + "`:"
+                    )
+                    for (concept in output.data.conceptsList) {
+                        System.out.printf("\t%s %.2f%n", concept.name, concept.value)
+                    }
+                }
+                return true
+            }
+
+            override fun onPostExecute(result: Boolean?) {
+                //Go to result fragment
+            }
+        }
+    }
+
+    init {
+        System.loadLibrary("native-lib")
+    }
+
+    external fun getApiSecret(): String
+    external fun getApiId(): String
 }
