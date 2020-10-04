@@ -16,12 +16,12 @@
             android:id="@+id/foodNameTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="132dp"
+            android:layout_marginTop="72dp"
             android:fontFamily="@font/roboto_thin"
             android:text="What's my name?"
             android:textSize="42sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.528"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,15 +54,15 @@
             android:text="R"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.016"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
-            app:layout_constraintVertical_bias="0.193" />
+            app:layout_constraintVertical_bias="0.11" />
 
         <TextView
             android:id="@+id/foodNameView"
-            android:layout_width="317dp"
-            android:layout_height="89dp"
+            android:layout_width="321dp"
+            android:layout_height="64dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_thin"
             android:text="Food Name"
@@ -75,8 +75,8 @@
 
         <Button
             android:id="@+id/listenButton"
-            android:layout_width="310dp"
-            android:layout_height="68dp"
+            android:layout_width="316dp"
+            android:layout_height="64dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto_thin"
             android:text="Button"
@@ -99,7 +99,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.80" />
+            app:layout_constraintGuide_percent="0.75" />
+
+        <Button
+            android:id="@+id/returnButton"
+            android:layout_width="305dp"
+            android:layout_height="59dp"
+            android:fontFamily="@font/roboto_thin"
+            android:text="Take New Picture?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rightButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

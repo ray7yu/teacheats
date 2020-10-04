@@ -64,43 +64,43 @@ class Clarifai(
             println(concept.name)
             when (concept.name) {
                 "apple" -> {
-                    label = "Apple"
+                    label = "Apple!"
                     break@loop
                 }
                 "banana" -> {
-                    label = "Banana"
+                    label = "Banana!"
                     break@loop
                 }
                 "grape" -> {
-                    label = "Grape"
+                    label = "Grape!"
                     break@loop
                 }
                 "lemon" -> {
-                    label = "Lemon"
+                    label = "Lemon!"
                     break@loop
                 }
                 "mango" -> {
-                    label = "Mango"
+                    label = "Mango!"
                     break@loop
                 }
                 "orange" -> {
-                    label = "Orange"
+                    label = "Orange!"
                     break@loop
                 }
                 "peach" -> {
-                    label = "Peach"
+                    label = "Peach!"
                     break@loop
                 }
                 "pineapple" -> {
-                    label = "Pineapple"
+                    label = "Pineapple!"
                     break@loop
                 }
                 "strawberry" -> {
-                    label = "Strawberry"
+                    label = "Strawberry!"
                     break@loop
                 }
                 "watermelon" -> {
-                    label = "Watermelon"
+                    label = "Watermelon!"
                     break@loop
                 }
                 else -> {

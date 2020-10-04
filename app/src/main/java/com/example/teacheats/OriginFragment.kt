@@ -23,7 +23,11 @@ class OriginFragment : Fragment() {
             false
         )
         binding.leftButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_originFragment_to_colorFragment)
+            view.findNavController().navigate(R.id.action_originFragment_to_colorFragment, arguments)
+        }
+        binding.returnButton.setOnClickListener { view: View ->
+            Photo.deleteImage(arguments)
+            view.findNavController().navigate(R.id.action_originFragment_to_titleFragment)
         }
         return binding.root
     }

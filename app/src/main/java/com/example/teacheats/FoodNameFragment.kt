@@ -23,10 +23,14 @@ class FoodNameFragment : Fragment() {
             false
         )
         binding.leftButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_foodNameFragment_to_resultFragment)
+            view.findNavController().navigate(R.id.action_foodNameFragment_to_resultFragment, arguments)
         }
         binding.rightButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_foodNameFragment_to_colorFragment)
+            view.findNavController().navigate(R.id.action_foodNameFragment_to_colorFragment, arguments)
+        }
+        binding.returnButton.setOnClickListener { view: View ->
+            Photo.deleteImage(arguments)
+            view.findNavController().navigate(R.id.action_foodNameFragment_to_titleFragment)
         }
         return binding.root
     }

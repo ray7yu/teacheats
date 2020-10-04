@@ -14,22 +14,22 @@
 
         <TextView
             android:id="@+id/foodNameTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_width="354dp"
+            android:layout_height="94dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/roboto_thin"
             android:text="Where did I come from?"
             android:textAlignment="center"
-            android:textSize="42sp"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.474"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/foodPic"
-            android:layout_width="306dp"
-            android:layout_height="225dp"
+            android:layout_width="355dp"
+            android:layout_height="292dp"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
@@ -39,43 +39,30 @@
 
         <Button
             android:id="@+id/leftButton"
-            android:layout_width="72dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="50dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto_thin"
             android:text="L"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.951"
+            app:layout_constraintHorizontal_bias="0.932"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <TextView
             android:id="@+id/foodNameView"
-            android:layout_width="252dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="299dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_thin"
             android:text="My old home"
             android:textAlignment="center"
             android:textSize="32sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodPic" />
-
-        <Button
-            android:id="@+id/listenButton"
-            android:layout_width="256dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="Button"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodNameView"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/foodPic" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -89,7 +76,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.80" />
+            app:layout_constraintGuide_percent="0.75" />
+
+        <Button
+            android:id="@+id/returnButton"
+            android:layout_width="328dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/roboto_thin"
+            android:text="Take New Picture?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leftButton"
+            app:layout_constraintVertical_bias="0.423" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

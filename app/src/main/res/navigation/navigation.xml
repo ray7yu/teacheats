@@ -68,6 +68,10 @@
             android:name="label"
             app:nullable="true"
             app:argType="string" />
+        <argument
+            android:name="photoPath"
+            app:nullable="true"
+            app:argType="string" />
         <action
             android:id="@+id/action_foodNameFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
@@ -87,6 +91,10 @@
             android:name="label"
             app:nullable="true"
             app:argType="string" />
+        <argument
+            android:name="photoPath"
+            app:nullable="true"
+            app:argType="string" />
         <action
             android:id="@+id/action_colorFragment_to_foodNameFragment"
             app:destination="@id/foodNameFragment" />
@@ -104,6 +112,10 @@
         tools:layout="@layout/fragment_origin" >
         <argument
             android:name="label"
+            app:nullable="true"
+            app:argType="string" />
+        <argument
+            android:name="photoPath"
             app:nullable="true"
             app:argType="string" />
         <action
