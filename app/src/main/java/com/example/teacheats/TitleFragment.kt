@@ -34,8 +34,11 @@ class TitleFragment : Fragment() {
                 val newBundle = Bundle()
                 newBundle.putString("photoPath", currentPhotoPath)
                 Log.d("photoPath", currentPhotoPath)
+//                val apiCall = Clarifai(getApiSecret(), view, newBundle)
+//                apiCall.execute("Hi")
                 view?.findNavController()
-                    ?.navigate(R.id.action_titleFragment_to_resultFragment, newBundle)
+                    ?.navigate(R.id.action_titleFragment_to_loadingFragment, newBundle)
+
             } else {
                 Log.d("Error", "Error")
             }
@@ -59,8 +62,6 @@ class TitleFragment : Fragment() {
         }
         binding.startButton.setOnClickListener {
             takeImage()
-            val apiCall: Clarifai = Clarifai(getApiSecret())
-            apiCall.execute("Hi")
         }
         return binding.root
     }
@@ -102,61 +103,63 @@ class TitleFragment : Fragment() {
         }
     }
 
-    companion object {
-        //Replace first parameter in async task with bitmap
-        class Clarifai(private val apiKey: String) : AsyncTask<String, String, Boolean>() {
-            override fun onPreExecute() {
-                //Move to spinner
-            }
-
-            override fun doInBackground(vararg params: String?): Boolean {
-                val channel: Channel = ClarifaiChannel.INSTANCE.jsonChannel;
-                val stub = V2Grpc.newBlockingStub(channel)
-                    .withCallCredentials(ClarifaiCallCredentials(apiKey))
-                val postWorkflowResultsResponse = stub.postWorkflowResults(
-                    PostWorkflowResultsRequest.newBuilder()
-                        .setWorkflowId("Food")
-                        .addInputs(
-                            Input.newBuilder().setData(
-                                Data.newBuilder().setImage(
-                                    Image.newBuilder().setUrl(
-                                        "https://samples.clarifai.com/metro-north.jpg"
-                                    )
-                                )
-                            )
-                        )
-                        .build()
-                )
-                if (postWorkflowResultsResponse.status.code != StatusCode.SUCCESS) {
-                    println("Post workflow results failed, status: " + postWorkflowResultsResponse.status)
-                    return false
-//                    throw java.lang.RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.status)
-                }
-
-                val results = postWorkflowResultsResponse.getResults(0)
-
-                for (output in results.outputsList) {
-                    val model: Model = output.model
-                    println(
-                        "Predicted concepts for the model `" + model.name.toString() + "`:"
-                    )
-                    for (concept in output.data.conceptsList) {
-                        System.out.printf("\t%s %.2f%n", concept.name, concept.value)
-                    }
-                }
-                return true
-            }
-
-            override fun onPostExecute(result: Boolean?) {
-                //Go to result fragment
-            }
-        }
-    }
-
-    init {
-        System.loadLibrary("native-lib")
-    }
-
-    external fun getApiSecret(): String
-    external fun getApiId(): String
+//    companion object {
+//        //Replace first parameter in async task with bitmap
+//        class Clarifai(private val apiKey: String, private val view: View?, private val bundle: Bundle) : AsyncTask<String, String, Boolean>() {
+//            override fun onPreExecute() {
+//                //Move to spinner
+//            }
+//
+//            override fun doInBackground(vararg params: String?): Boolean {
+//                val channel: Channel = ClarifaiChannel.INSTANCE.jsonChannel;
+//                val stub = V2Grpc.newBlockingStub(channel)
+//                    .withCallCredentials(ClarifaiCallCredentials(apiKey))
+//                val postWorkflowResultsResponse = stub.postWorkflowResults(
+//                    PostWorkflowResultsRequest.newBuilder()
+//                        .setWorkflowId("Food")
+//                        .addInputs(
+//                            Input.newBuilder().setData(
+//                                Data.newBuilder().setImage(
+//                                    Image.newBuilder().setUrl(
+//                                        "https://samples.clarifai.com/metro-north.jpg"
+//                                    )
+//                                )
+//                            )
+//                        )
+//                        .build()
+//                )
+//                if (postWorkflowResultsResponse.status.code != StatusCode.SUCCESS) {
+//                    println("Post workflow results failed, status: " + postWorkflowResultsResponse.status)
+//                    return false
+////                    throw java.lang.RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.status)
+//                }
+//
+//                val results = postWorkflowResultsResponse.getResults(0)
+//
+//                for (output in results.outputsList) {
+//                    val model: Model = output.model
+//                    println(
+//                        "Predicted concepts for the model `" + model.name.toString() + "`:"
+//                    )
+//                    for (concept in output.data.conceptsList) {
+//                        System.out.printf("\t%s %.2f%n", concept.name, concept.value)
+//                    }
+//                }
+//                return true
+//            }
+//
+//            override fun onPostExecute(result: Boolean?) {
+//                //Go to result fragment
+//                view?.findNavController()
+//                    ?.navigate(R.id.action_titleFragment_to_resultFragment, bundle)
+//            }
+//        }
+//    }
+//
+//    init {
+//        System.loadLibrary("native-lib")
+//    }
+//
+//    external fun getApiSecret(): String
+//    external fun getApiId(): String
 }

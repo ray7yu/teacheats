@@ -14,8 +14,8 @@
             android:id="@+id/action_titleFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
         <action
-            android:id="@+id/action_titleFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            android:id="@+id/action_titleFragment_to_loadingFragment"
+            app:destination="@id/loadingFragment" />
     </fragment>
     <fragment
         android:id="@+id/helpFragment"
@@ -35,8 +35,82 @@
             android:name="photoPath"
             app:nullable="true"
             app:argType="string" />
+        <argument
+            android:name="label"
+            app:nullable="true"
+            app:argType="string" />
         <action
             android:id="@+id/action_resultFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_foodNameFragment"
+            app:destination="@id/foodNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.example.teacheats.LoadingFragment"
+        android:label="fragment_loading"
+        tools:layout="@layout/fragment_loading" >
+        <argument
+            android:name="photoPath"
+            app:nullable="true"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_loadingFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodNameFragment"
+        android:name="com.example.teacheats.FoodNameFragment"
+        android:label="fragment_food_name"
+        tools:layout="@layout/fragment_food_name" >
+        <argument
+            android:name="label"
+            app:nullable="true"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_foodNameFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_foodNameFragment_to_colorFragment"
+            app:destination="@id/colorFragment" />
+        <action
+            android:id="@+id/action_foodNameFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/colorFragment"
+        android:name="com.example.teacheats.ColorFragment"
+        android:label="fragment_color"
+        tools:layout="@layout/fragment_color" >
+        <argument
+            android:name="label"
+            app:nullable="true"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_colorFragment_to_foodNameFragment"
+            app:destination="@id/foodNameFragment" />
+        <action
+            android:id="@+id/action_colorFragment_to_originFragment"
+            app:destination="@id/originFragment" />
+        <action
+            android:id="@+id/action_colorFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/originFragment"
+        android:name="com.example.teacheats.OriginFragment"
+        android:label="fragment_origin"
+        tools:layout="@layout/fragment_origin" >
+        <argument
+            android:name="label"
+            app:nullable="true"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_originFragment_to_colorFragment"
+            app:destination="@id/colorFragment" />
+        <action
+            android:id="@+id/action_originFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
     </fragment>
 </navigation>
