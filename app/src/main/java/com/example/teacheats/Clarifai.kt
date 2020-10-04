@@ -1,14 +1,19 @@
 package com.example.teacheats
 
 import android.os.AsyncTask
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import com.clarifai.channel.ClarifaiChannel
 import com.clarifai.credentials.ClarifaiCallCredentials
 import com.clarifai.grpc.api.*
 import com.clarifai.grpc.api.status.StatusCode
 import com.example.teacheats.databinding.FragmentLoadingBinding
+import com.google.protobuf.ByteString
 import io.grpc.Channel
+import java.io.File
+import java.nio.file.Files
 
 class Clarifai(
     private val apiKey: String,
@@ -19,6 +24,7 @@ class Clarifai(
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun doInBackground(vararg params: String?): Output? {
         val channel: Channel = ClarifaiChannel.INSTANCE.jsonChannel;
         val stub = V2Grpc.newBlockingStub(channel)
@@ -29,9 +35,11 @@ class Clarifai(
                 .addInputs(
                     Input.newBuilder().setData(
                         Data.newBuilder().setImage(
-                            Image.newBuilder().setUrl(
-                                "https://samples.clarifai.com/metro-north.jpg"
-                            )
+                            Image.newBuilder()
+                                .setBase64(
+                                    ByteString.copyFrom(Files.readAllBytes(
+                                        File(bundle.getString("photoPath").toString()).toPath()
+                                )))
                         )
                     )
                 )
