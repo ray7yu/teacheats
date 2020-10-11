@@ -35,6 +35,9 @@ class ResultFragment : Fragment() {
         binding.learnButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_resultFragment_to_foodNameFragment, arguments)
         }
+        if(arguments?.getString("label").toString() == ""){
+            binding.learnButton.visibility = View.INVISIBLE
+        }
         return binding.root
     }
 }

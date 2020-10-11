@@ -22,6 +22,7 @@ class OriginFragment : Fragment() {
             container,
             false
         )
+        Learn.chooseOrigin(binding.foodPic, arguments?.getString("label").toString())
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_originFragment_to_colorFragment, arguments)
         }
