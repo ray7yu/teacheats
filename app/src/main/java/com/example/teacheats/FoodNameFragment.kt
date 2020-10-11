@@ -24,7 +24,7 @@ class FoodNameFragment : Fragment() {
         )
         Learn.chooseIcon(binding.foodPic, arguments?.getString("label").toString())
         Learn.chooseWord(binding.foodNameView, arguments?.getString("label").toString())
-        this.context?.let { Learn.setSound(it, binding.listenButton, arguments?.getString("label").toString()) }
+        this.context?.let { Learn.setFoodSound(it, binding.listenButton, arguments?.getString("label").toString()) }
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_foodNameFragment_to_resultFragment, arguments)
         }

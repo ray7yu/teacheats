@@ -3,4 +3,10 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="red">#FA6E79</color>
+    <color name="green">#4DBD33</color>
+    <color name="purple">#600080</color>
+    <color name="yellow">#FFFF7F</color>
+    <color name="peach">#FFD2B4</color>
+    <color name="orange">#FFA500</color>
 </resources>

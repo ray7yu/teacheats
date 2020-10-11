@@ -22,6 +22,9 @@ class ColorFragment : Fragment() {
             container,
             false
         )
+        this.context?.let { Learn.chooseColor(it, binding.colorView, arguments?.getString("label").toString()) }
+        this.context?.let { Learn.setColorSound(it, binding.listenButton, arguments?.getString("label").toString()) }
+
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_colorFragment_to_foodNameFragment, arguments)
         }

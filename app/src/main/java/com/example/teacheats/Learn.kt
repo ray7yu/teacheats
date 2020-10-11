@@ -6,6 +6,8 @@ import android.media.MediaPlayer
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import java.security.AccessController.getContext
 
 class Learn {
     companion object {
@@ -51,19 +53,81 @@ class Learn {
                 "Watermelon!" -> textView.text = "WATERMELON"
             }
         }
-        fun setSound(context: Context, listenButton: Button, label: String){
+        fun setFoodSound(context: Context, listenButton: Button, label: String){
             val mp : MediaPlayer = when (label) {
                 "Apple!" -> MediaPlayer.create(context, R.raw.apple)
                 "Banana!" -> MediaPlayer.create(context, R.raw.banana)
                 "Grape!" -> MediaPlayer.create(context, R.raw.grape)
                 "Lemon!" -> MediaPlayer.create(context, R.raw.lemon)
                 "Mango!" -> MediaPlayer.create(context, R.raw.mango)
-                "Orange!" -> MediaPlayer.create(context, R.raw.banana)
+                "Orange!" -> MediaPlayer.create(context, R.raw.orange)
                 "Peach!" -> MediaPlayer.create(context, R.raw.peach)
                 "Pineapple!" -> MediaPlayer.create(context, R.raw.pineapple)
                 "Strawberry!" -> MediaPlayer.create(context, R.raw.strawberry)
                 "Watermelon!" -> MediaPlayer.create(context, R.raw.watermelon)
                 else -> MediaPlayer.create(context, R.raw.apple)
+            }
+            listenButton.setOnClickListener{
+                mp.start()
+            }
+        }
+        fun chooseColor(context: Context, textView: TextView, label: String){
+            when (label) {
+                "Apple!" -> {
+                    textView.text = "RED"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
+                }
+                "Banana!" -> {
+                    textView.text = "YELLOW"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                }
+                "Grape!" -> {
+                    textView.text = "PURPLE"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.purple))
+                }
+                "Lemon!" -> {
+                    textView.text = "YELLOW"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                }
+                "Mango!" -> {
+                    textView.text = "ORANGE"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
+                }
+                "Orange!" -> {
+                    textView.text = "ORANGE"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
+                }
+                "Peach!" -> {
+                    textView.text = "PEACH"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.peach))
+                }
+                "Pineapple!" -> {
+                    textView.text = "YELLOW"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                }
+                "Strawberry!" -> {
+                    textView.text = "RED"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
+                }
+                "Watermelon!" -> {
+                    textView.text = "GREEN"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
+                }
+            }
+        }
+        fun setColorSound(context: Context, listenButton: Button, label: String){
+            val mp : MediaPlayer = when (label) {
+                "Apple!" -> MediaPlayer.create(context, R.raw.red)
+                "Banana!" -> MediaPlayer.create(context, R.raw.yellow)
+                "Grape!" -> MediaPlayer.create(context, R.raw.purple)
+                "Lemon!" -> MediaPlayer.create(context, R.raw.yellow)
+                "Mango!" -> MediaPlayer.create(context, R.raw.orange)
+                "Orange!" -> MediaPlayer.create(context, R.raw.orange)
+                "Peach!" -> MediaPlayer.create(context, R.raw.peach)
+                "Pineapple!" -> MediaPlayer.create(context, R.raw.yellow)
+                "Strawberry!" -> MediaPlayer.create(context, R.raw.red)
+                "Watermelon!" -> MediaPlayer.create(context, R.raw.green)
+                else -> MediaPlayer.create(context, R.raw.red)
             }
             listenButton.setOnClickListener{
                 mp.start()
