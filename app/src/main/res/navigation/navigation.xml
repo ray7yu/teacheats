@@ -57,7 +57,9 @@
             app:argType="string" />
         <action
             android:id="@+id/action_loadingFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/loadingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/foodNameFragment"
