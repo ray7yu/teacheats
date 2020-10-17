@@ -1,9 +1,9 @@
-package com.example.teacheats
+package com.teach.eats
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.teacheats.databinding.ActivityMainBinding
+import com.teach.eats.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

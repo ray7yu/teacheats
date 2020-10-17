@@ -1,4 +1,4 @@
-package com.example.teacheats
+package com.teach.eats
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.example.teacheats.databinding.FragmentColorBinding
+import com.teach.eats.databinding.FragmentColorBinding
 
 class ColorFragment : Fragment() {
     override fun onCreateView(
@@ -22,8 +22,20 @@ class ColorFragment : Fragment() {
             container,
             false
         )
-        this.context?.let { Learn.chooseColor(it, binding.colorView, arguments?.getString("label").toString()) }
-        this.context?.let { Learn.setColorSound(it, binding.listenButton, arguments?.getString("label").toString()) }
+        this.context?.let {
+            Learn.chooseColor(
+                it,
+                binding.colorView,
+                arguments?.getString("label").toString()
+            )
+        }
+        this.context?.let {
+            Learn.setColorSound(
+                it,
+                binding.listenButton,
+                arguments?.getString("label").toString()
+            )
+        }
 
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_colorFragment_to_foodNameFragment, arguments)

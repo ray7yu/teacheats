@@ -1,7 +1,6 @@
-package com.example.teacheats
+package com.teach.eats
 
 import android.net.Uri
-import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -13,15 +12,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.clarifai.channel.ClarifaiChannel
-import com.clarifai.credentials.ClarifaiCallCredentials
 import com.clarifai.grpc.api.*
-import com.clarifai.grpc.api.status.StatusCode
-import com.example.teacheats.databinding.FragmentTitleBinding
-import io.grpc.Channel
+import com.teach.eats.databinding.FragmentTitleBinding
 import java.io.File
 import java.io.IOException
-import java.lang.ref.WeakReference
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -1,11 +1,11 @@
-package com.example.teacheats
+package com.teach.eats
 
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.teacheats.databinding.FragmentResultBinding
+import com.teach.eats.databinding.FragmentResultBinding
 import java.io.File
 
 class Photo {

@@ -1,13 +1,12 @@
-package com.example.teacheats
+package com.teach.eats
 
-import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.example.teacheats.databinding.FragmentLoadingBinding
+import com.teach.eats.databinding.FragmentLoadingBinding
 
 class LoadingFragment : Fragment() {
     override fun onCreateView(

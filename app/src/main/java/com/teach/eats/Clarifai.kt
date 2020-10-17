@@ -1,4 +1,4 @@
-package com.example.teacheats
+package com.teach.eats
 
 import android.os.AsyncTask
 import android.os.Build
@@ -9,7 +9,7 @@ import com.clarifai.channel.ClarifaiChannel
 import com.clarifai.credentials.ClarifaiCallCredentials
 import com.clarifai.grpc.api.*
 import com.clarifai.grpc.api.status.StatusCode
-import com.example.teacheats.databinding.FragmentLoadingBinding
+import com.teach.eats.databinding.FragmentLoadingBinding
 import com.google.protobuf.ByteString
 import io.grpc.Channel
 import java.io.File

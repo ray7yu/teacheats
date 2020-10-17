@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/titleFragment"
-        android:name="com.example.teacheats.TitleFragment"
+        android:name="com.teach.eats.TitleFragment"
         android:label="fragment_title"
         tools:layout="@layout/fragment_title" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/helpFragment"
-        android:name="com.example.teacheats.HelpFragment"
+        android:name="com.teach.eats.HelpFragment"
         android:label="HelpFragment"
         tools:layout="@layout/fragment_help">
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.teacheats.ResultFragment"
+        android:name="com.teach.eats.ResultFragment"
         android:label="ResultFragment"
         tools:layout="@layout/fragment_result">
         <argument
@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/loadingFragment"
-        android:name="com.example.teacheats.LoadingFragment"
+        android:name="com.teach.eats.LoadingFragment"
         android:label="fragment_loading"
         tools:layout="@layout/fragment_loading" >
         <argument
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodNameFragment"
-        android:name="com.example.teacheats.FoodNameFragment"
+        android:name="com.teach.eats.FoodNameFragment"
         android:label="fragment_food_name"
         tools:layout="@layout/fragment_food_name" >
         <argument
@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/colorFragment"
-        android:name="com.example.teacheats.ColorFragment"
+        android:name="com.teach.eats.ColorFragment"
         android:label="fragment_color"
         tools:layout="@layout/fragment_color" >
         <argument
@@ -115,7 +115,7 @@
     </fragment>
     <fragment
         android:id="@+id/originFragment"
-        android:name="com.example.teacheats.OriginFragment"
+        android:name="com.teach.eats.OriginFragment"
         android:label="fragment_origin"
         tools:layout="@layout/fragment_origin" >
         <argument

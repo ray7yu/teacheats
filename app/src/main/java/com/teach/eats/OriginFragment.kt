@@ -1,4 +1,4 @@
-package com.example.teacheats
+package com.teach.eats
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.example.teacheats.databinding.FragmentOriginBinding
+import com.teach.eats.databinding.FragmentOriginBinding
 
 class OriginFragment : Fragment() {
     override fun onCreateView(
@@ -22,7 +22,10 @@ class OriginFragment : Fragment() {
             container,
             false
         )
-        Learn.chooseOrigin(binding.foodPic, arguments?.getString("label").toString())
+        Learn.chooseOrigin(
+            binding.foodPic,
+            arguments?.getString("label").toString()
+        )
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_originFragment_to_colorFragment, arguments)
         }

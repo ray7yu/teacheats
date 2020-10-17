@@ -1,18 +1,13 @@
-package com.example.teacheats
+package com.teach.eats
 
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.example.teacheats.databinding.FragmentResultBinding
-import java.io.File
+import com.teach.eats.databinding.FragmentResultBinding
 
 class ResultFragment : Fragment() {
     override fun onCreateView(

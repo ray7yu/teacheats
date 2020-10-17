@@ -1,4 +1,4 @@
-package com.example.teacheats
+package com.teach.eats
 
 import android.annotation.SuppressLint
 import android.content.Context

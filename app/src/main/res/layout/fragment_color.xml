@@ -51,12 +51,14 @@
 
         <TextView
             android:id="@+id/colorView"
-            android:layout_width="360dp"
+            android:layout_width="321dp"
             android:layout_height="104dp"
             android:layout_marginTop="84dp"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:text="Color Name"
+            android:textColor="#FFFFFF"
+            android:background="#4F4F4F"
             android:textAlignment="center"
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"

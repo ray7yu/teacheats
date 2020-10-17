@@ -64,7 +64,7 @@
             android:layout_width="321dp"
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
-            android:background="#FA6E79"
+            android:background="#4F4F4F"
             android:fontFamily="@font/montserrat"
             android:text="Food Name"
             android:textAlignment="center"
