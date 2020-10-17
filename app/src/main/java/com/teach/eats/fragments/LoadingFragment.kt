@@ -1,4 +1,4 @@
-package com.teach.eats
+package com.teach.eats.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.teach.eats.Clarifai
+import com.teach.eats.R
 import com.teach.eats.databinding.FragmentLoadingBinding
 
 class LoadingFragment : Fragment() {

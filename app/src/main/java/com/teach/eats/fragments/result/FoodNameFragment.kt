@@ -1,4 +1,4 @@
-package com.teach.eats
+package com.teach.eats.fragments.result
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -10,6 +10,9 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.teach.eats.Learn
+import com.teach.eats.Photo
+import com.teach.eats.R
 import com.teach.eats.databinding.FragmentFoodNameBinding
 
 class FoodNameFragment : Fragment() {
@@ -40,8 +43,14 @@ class FoodNameFragment : Fragment() {
             }
         )
         //Sets up food picture and food name views
-        Learn.chooseIcon(binding.foodPic, arguments?.getString("label").toString())
-        Learn.chooseWord(binding.foodNameView, arguments?.getString("label").toString())
+        Learn.chooseIcon(
+            binding.foodPic,
+            arguments?.getString("label").toString()
+        )
+        Learn.chooseWord(
+            binding.foodNameView,
+            arguments?.getString("label").toString()
+        )
 
         //Sets up audio for listen button
         this.context?.let {

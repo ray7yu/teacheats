@@ -1,4 +1,4 @@
-package com.teach.eats
+package com.teach.eats.fragments.result
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -10,6 +10,9 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.teach.eats.Learn
+import com.teach.eats.Photo
+import com.teach.eats.R
 import com.teach.eats.databinding.FragmentColorBinding
 
 class ColorFragment : Fragment() {

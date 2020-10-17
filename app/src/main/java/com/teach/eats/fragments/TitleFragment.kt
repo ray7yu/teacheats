@@ -1,4 +1,4 @@
-package com.teach.eats
+package com.teach.eats.fragments
 
 import android.net.Uri
 import android.os.Bundle
@@ -13,6 +13,7 @@ import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.clarifai.grpc.api.*
+import com.teach.eats.R
 import com.teach.eats.databinding.FragmentTitleBinding
 import java.io.File
 import java.io.IOException
@@ -96,64 +97,4 @@ class TitleFragment : Fragment() {
             getPicture.launch(photoURI)
         }
     }
-
-//    companion object {
-//        //Replace first parameter in async task with bitmap
-//        class Clarifai(private val apiKey: String, private val view: View?, private val bundle: Bundle) : AsyncTask<String, String, Boolean>() {
-//            override fun onPreExecute() {
-//                //Move to spinner
-//            }
-//
-//            override fun doInBackground(vararg params: String?): Boolean {
-//                val channel: Channel = ClarifaiChannel.INSTANCE.jsonChannel;
-//                val stub = V2Grpc.newBlockingStub(channel)
-//                    .withCallCredentials(ClarifaiCallCredentials(apiKey))
-//                val postWorkflowResultsResponse = stub.postWorkflowResults(
-//                    PostWorkflowResultsRequest.newBuilder()
-//                        .setWorkflowId("Food")
-//                        .addInputs(
-//                            Input.newBuilder().setData(
-//                                Data.newBuilder().setImage(
-//                                    Image.newBuilder().setUrl(
-//                                        "https://samples.clarifai.com/metro-north.jpg"
-//                                    )
-//                                )
-//                            )
-//                        )
-//                        .build()
-//                )
-//                if (postWorkflowResultsResponse.status.code != StatusCode.SUCCESS) {
-//                    println("Post workflow results failed, status: " + postWorkflowResultsResponse.status)
-//                    return false
-////                    throw java.lang.RuntimeException("Post workflow results failed, status: " + postWorkflowResultsResponse.status)
-//                }
-//
-//                val results = postWorkflowResultsResponse.getResults(0)
-//
-//                for (output in results.outputsList) {
-//                    val model: Model = output.model
-//                    println(
-//                        "Predicted concepts for the model `" + model.name.toString() + "`:"
-//                    )
-//                    for (concept in output.data.conceptsList) {
-//                        System.out.printf("\t%s %.2f%n", concept.name, concept.value)
-//                    }
-//                }
-//                return true
-//            }
-//
-//            override fun onPostExecute(result: Boolean?) {
-//                //Go to result fragment
-//                view?.findNavController()
-//                    ?.navigate(R.id.action_titleFragment_to_resultFragment, bundle)
-//            }
-//        }
-//    }
-//
-//    init {
-//        System.loadLibrary("native-lib")
-//    }
-//
-//    external fun getApiSecret(): String
-//    external fun getApiId(): String
 }

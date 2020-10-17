@@ -1,4 +1,4 @@
-package com.teach.eats
+package com.teach.eats.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.teach.eats.R
 import com.teach.eats.databinding.FragmentHelpBinding
 
 class HelpFragment : Fragment() {
@@ -15,7 +16,8 @@ class HelpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentHelpBinding>(inflater, R.layout.fragment_help, container, false)
+        val binding = DataBindingUtil.inflate<FragmentHelpBinding>(inflater,
+            R.layout.fragment_help, container, false)
         binding.helpReturnButton.setOnClickListener{view: View ->
             view.findNavController().navigate(R.id.action_helpFragment_to_titleFragment)
         }
