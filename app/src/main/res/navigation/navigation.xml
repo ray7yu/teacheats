@@ -46,7 +46,9 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_resultFragment_to_foodNameFragment"
-            app:destination="@id/foodNameFragment" />
+            app:destination="@id/foodNameFragment"
+            app:popUpTo="@id/loadingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loadingFragment"
@@ -81,7 +83,9 @@
             app:destination="@id/resultFragment" />
         <action
             android:id="@+id/action_foodNameFragment_to_colorFragment"
-            app:destination="@id/colorFragment" />
+            app:destination="@id/colorFragment"
+            app:popUpTo="@id/loadingFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_foodNameFragment_to_titleFragment"
             app:destination="@id/titleFragment"
@@ -106,7 +110,9 @@
             app:destination="@id/foodNameFragment" />
         <action
             android:id="@+id/action_colorFragment_to_originFragment"
-            app:destination="@id/originFragment" />
+            app:destination="@id/originFragment"
+            app:popUpTo="@id/loadingFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_colorFragment_to_titleFragment"
             app:destination="@id/titleFragment"

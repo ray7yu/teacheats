@@ -1,10 +1,13 @@
 package com.teach.eats
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.teach.eats.databinding.FragmentColorBinding
@@ -22,6 +25,20 @@ class ColorFragment : Fragment() {
             container,
             false
         )
+        //Custom back pressed callback that also deletes photo
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d(ContentValues.TAG, "Fragment back pressed invoked")
+                    Photo.deleteImage(arguments)
+                    if (isEnabled) {
+                        isEnabled = false
+                        requireActivity().onBackPressed()
+                    }
+                }
+            }
+        )
         this.context?.let {
             Learn.chooseColor(
                 it,
@@ -36,12 +53,13 @@ class ColorFragment : Fragment() {
                 arguments?.getString("label").toString()
             )
         }
-
         binding.leftButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_colorFragment_to_foodNameFragment, arguments)
+            view.findNavController()
+                .navigate(R.id.action_colorFragment_to_foodNameFragment, arguments)
         }
         binding.rightButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_colorFragment_to_originFragment, arguments)
+            view.findNavController()
+                .navigate(R.id.action_colorFragment_to_originFragment, arguments)
         }
         binding.returnButton.setOnClickListener { view: View ->
             Photo.deleteImage(arguments)

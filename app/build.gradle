@@ -17,7 +17,7 @@ android {
     }
     defaultConfig {
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
-        applicationId "com.example.teacheats"
+        applicationId "com.teach.eats"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
