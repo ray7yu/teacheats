@@ -17,67 +17,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/montserrat"
             android:text="What's my name?"
-            android:textSize="42sp"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.528"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/foodPic"
-            android:layout_width="161dp"
-            android:layout_height="140dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/foodNameTitle"
             app:srcCompat="@drawable/ic_launcher_background" />
 
-        <Button
-            android:id="@+id/leftButton"
-            android:layout_width="72dp"
-            android:layout_height="64dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="L"
-            app:layout_constraintBaseline_toBaselineOf="@+id/rightButton"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/rightButton"
-            android:layout_width="72dp"
-            android:layout_height="64dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="R"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/guideline4"
-            app:layout_constraintVertical_bias="0.11" />
-
         <TextView
             android:id="@+id/foodNameView"
-            android:layout_width="321dp"
-            android:layout_height="64dp"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
             android:layout_marginTop="20dp"
             android:background="#4F4F4F"
             android:fontFamily="@font/montserrat"
             android:text="Food Name"
+            android:gravity="center"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/foodPic" />
 
         <Button
             android:id="@+id/listenButton"
-            android:layout_width="316dp"
+            android:layout_width="300dp"
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat"
@@ -86,10 +61,35 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/foodNameView"
             app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/leftButton"
+            android:layout_width="75dp"
+            android:layout_height="64dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/left"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/rightButton"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/rightButton"
+            android:layout_width="75dp"
+            android:layout_height="64dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/right"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline4"
+            app:layout_constraintVertical_bias="0.10" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -107,10 +107,12 @@
 
         <Button
             android:id="@+id/returnButton"
-            android:layout_width="305dp"
-            android:layout_height="59dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="Take New Picture?"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:fontFamily="@font/montserrat"
+            android:textAllCaps="false"
+            android:text="@string/new_picture"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

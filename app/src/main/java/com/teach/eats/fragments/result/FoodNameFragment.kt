@@ -47,10 +47,13 @@ class FoodNameFragment : Fragment() {
             binding.foodPic,
             arguments?.getString("label").toString()
         )
-        Learn.chooseWord(
-            binding.foodNameView,
-            arguments?.getString("label").toString()
-        )
+        this.context?.let {
+            Learn.chooseWord(
+                it,
+                binding.foodNameView,
+                arguments?.getString("label").toString()
+            )
+        }
 
         //Sets up audio for listen button
         this.context?.let {

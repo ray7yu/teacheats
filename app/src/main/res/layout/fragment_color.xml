@@ -17,20 +17,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/montserrat"
             android:text="What color am I?"
-            android:textSize="42sp"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/colorView"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="75dp"
+            android:background="#4F4F4F"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:text="Color Name"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/colorTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/listenButton"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Listen"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/colorView"
+            app:layout_constraintVertical_bias="0.25" />
+
         <Button
             android:id="@+id/leftButton"
-            android:layout_width="63dp"
-            android:layout_height="55dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="L"
+            android:layout_width="75dp"
+            android:layout_height="64dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/left"
+            android:textSize="24sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/rightButton"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="0.95"
@@ -38,47 +72,17 @@
 
         <Button
             android:id="@+id/rightButton"
-            android:layout_width="63dp"
-            android:layout_height="51dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="R"
+            android:layout_width="75dp"
+            android:layout_height="64dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/right"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
-            app:layout_constraintVertical_bias="0.072" />
-
-        <TextView
-            android:id="@+id/colorView"
-            android:layout_width="321dp"
-            android:layout_height="104dp"
-            android:layout_marginTop="84dp"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:text="Color Name"
-            android:textColor="#FFFFFF"
-            android:background="#4F4F4F"
-            android:textAlignment="center"
-            android:textSize="48sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/colorTitle" />
-
-        <Button
-            android:id="@+id/listenButton"
-            android:layout_width="338dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="Listen"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/colorView"
-            app:layout_constraintVertical_bias="0.407" />
+            app:layout_constraintVertical_bias="0.1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -96,15 +100,16 @@
 
         <Button
             android:id="@+id/returnButton"
-            android:layout_width="328dp"
-            android:layout_height="50dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="Take New Picture?"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:fontFamily="@font/montserrat"
+            android:textAllCaps="false"
+            android:text="@string/new_picture"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rightButton"
-            app:layout_constraintVertical_bias="0.461" />
+            app:layout_constraintTop_toBottomOf="@+id/rightButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

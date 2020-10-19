@@ -19,7 +19,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/montserrat"
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textSize="42sp"
@@ -27,34 +27,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.24" />
-
-        <Button
-            android:id="@+id/help_button"
-            android:layout_width="206dp"
-            android:layout_height="63dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="@string/help_button"
-            android:textAllCaps="false"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline"
-            app:layout_constraintVertical_bias="0.06" />
+            app:layout_constraintVertical_bias="0.25" />
 
         <Button
             android:id="@+id/start_button"
-            android:layout_width="214dp"
-            android:layout_height="63dp"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/montserrat"
             android:text="@string/start_button"
             android:textAllCaps="false"
             android:textSize="30sp"
@@ -62,14 +44,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_header"
-            app:layout_constraintVertical_bias="0.97" />
+            app:layout_constraintVertical_bias="0.95" />
+
+        <Button
+            android:id="@+id/help_button"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/help_button"
+            android:textAllCaps="false"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_bias="0.05" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.75" />
+            app:layout_constraintGuide_percent="0.80" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

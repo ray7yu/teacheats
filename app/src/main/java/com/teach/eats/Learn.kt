@@ -2,6 +2,7 @@ package com.teach.eats
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.widget.Button
 import android.widget.ImageView
@@ -39,18 +40,51 @@ class Learn {
                 "Watermelon!" -> imageView.setImageResource(R.drawable.watermelon_origin)
             }
         }
-        fun chooseWord(textView: TextView, label: String){
+        fun chooseWord(context: Context, textView: TextView, label: String){
             when (label) {
-                "Apple!" -> textView.text = "APPLE"
-                "Banana!" -> textView.text = "BANANA"
-                "Grape!" -> textView.text = "GRAPE"
-                "Lemon!" -> textView.text = "LEMON"
-                "Mango!" -> textView.text = "MANGO"
-                "Orange!" -> textView.text = "ORANGE"
-                "Peach!" -> textView.text = "PEACH"
-                "Pineapple!" -> textView.text = "PINEAPPLE"
-                "Strawberry!" -> textView.text = "STRAWBERRY"
-                "Watermelon!" -> textView.text = "WATERMELON"
+                "Apple!" -> {
+                    textView.text = "APPLE"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
+                }
+                "Banana!" -> {
+                    textView.text = "BANANA"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                    textView.setTextColor(Color.GRAY)
+                }
+                "Grape!" -> {
+                    textView.text = "GRAPE"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.purple))
+                }
+                "Lemon!" -> {
+                    textView.text = "LEMON"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                    textView.setTextColor(Color.GRAY)
+                }
+                "Mango!" -> {
+                    textView.text = "MANGO"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
+                }
+                "Orange!" -> {
+                    textView.text = "ORANGE"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
+                }
+                "Peach!" -> {
+                    textView.text = "PEACH"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.peach))
+                }
+                "Pineapple!" -> {
+                    textView.text = "PINEAPPLE"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                    textView.setTextColor(Color.GRAY)
+                }
+                "Strawberry!" -> {
+                    textView.text = "STRAWBERRY"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
+                }
+                "Watermelon!" -> {
+                    textView.text = "WATERMELON"
+                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
+                }
             }
         }
         fun setFoodSound(context: Context, listenButton: Button, label: String){
@@ -80,6 +114,7 @@ class Learn {
                 "Banana!" -> {
                     textView.text = "YELLOW"
                     textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                    textView.setTextColor(Color.GRAY)
                 }
                 "Grape!" -> {
                     textView.text = "PURPLE"
@@ -88,6 +123,7 @@ class Learn {
                 "Lemon!" -> {
                     textView.text = "YELLOW"
                     textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                    textView.setTextColor(Color.GRAY)
                 }
                 "Mango!" -> {
                     textView.text = "ORANGE"
@@ -104,6 +140,7 @@ class Learn {
                 "Pineapple!" -> {
                     textView.text = "YELLOW"
                     textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+                    textView.setTextColor(Color.GRAY)
                 }
                 "Strawberry!" -> {
                     textView.text = "RED"

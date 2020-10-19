@@ -12,27 +12,64 @@
         android:layout_height="match_parent"
         tools:context=".fragments.result.ResultFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/montserrat"
             android:text="@string/result"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.101" />
+            app:layout_constraintVertical_bias="0.10" />
+
+        <TextView
+            android:id="@+id/labelView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/label"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/foodPicture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageView
+            android:id="@+id/foodPicture"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.442"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <Button
+            android:id="@+id/learnButton"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Learn!"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/result_return_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foodPicture"
+            app:layout_constraintVertical_bias="0.718" />
 
         <Button
             android:id="@+id/result_return_button"
-            android:layout_width="192dp"
+            android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_marginBottom="28dp"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/montserrat"
             android:text="@string/new_button"
             android:textAllCaps="false"
             android:textSize="24sp"
@@ -47,44 +84,5 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.92" />
-
-        <ImageView
-            android:id="@+id/foodPicture"
-            android:layout_width="301dp"
-            android:layout_height="286dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.442"
-            app:srcCompat="@drawable/ic_launcher_background" />
-
-        <TextView
-            android:id="@+id/labelView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_thin"
-            android:text="@string/label"
-            android:textSize="36sp"
-            app:layout_constraintBottom_toTopOf="@+id/foodPicture"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.558" />
-
-        <Button
-            android:id="@+id/learnButton"
-            android:layout_width="192dp"
-            android:layout_height="60dp"
-            android:fontFamily="@font/roboto_thin"
-            android:text="Learn!"
-            android:textAllCaps="false"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/result_return_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodPicture"
-            app:layout_constraintVertical_bias="0.718" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
