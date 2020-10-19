@@ -1,18 +1,22 @@
 package com.teach.eats.fragments.result
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.teach.eats.Photo
 import com.teach.eats.R
 import com.teach.eats.databinding.FragmentResultBinding
+
 
 class ResultFragment : Fragment() {
     override fun onCreateView(
@@ -40,9 +44,19 @@ class ResultFragment : Fragment() {
             }
         )
 
-        //Label and Image are set using Photo class
+        //Sets image after layout methods have been called, views are in place, and activity is ready to be displayed
+        val myView: View = binding.foodPicture
+        myView.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
+            @SuppressLint("NewApi")
+            override fun onGlobalLayout() {
+                Photo.getImage(binding, arguments)
+                // Once data has been obtained, this listener is no longer needed, so remove it...
+                myView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
+
+        //Label is set using Photo class
         Photo.getLabel(binding, arguments)
-        Photo.getImage(binding, arguments)
 
         //Pressing return button will delete image and return to title fragment
         binding.resultReturnButton.setOnClickListener { view: View ->
