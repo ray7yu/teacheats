@@ -14,10 +14,10 @@
 
         <TextView
             android:id="@+id/colorTitle"
+            style="@style/Font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
-            android:fontFamily="@font/montserrat"
             android:text="What color am I?"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,12 +26,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            style="@style/Font"
             android:id="@+id/colorView"
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_marginTop="75dp"
             android:background="#4F4F4F"
-            android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:text="Color Name"
             android:textAlignment="center"
@@ -43,13 +43,14 @@
             app:layout_constraintTop_toBottomOf="@+id/colorTitle"
             app:layout_constraintVertical_bias="0.0" />
 
-        <Button
+        <ImageButton
+            style="@style/Font"
             android:id="@+id/listenButton"
-            android:layout_width="300dp"
-            android:layout_height="64dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat"
-            android:text="Listen"
+            android:src="@drawable/listen"
+            android:background="@android:color/transparent"
             android:textAllCaps="false"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
@@ -60,26 +61,27 @@
 
         <Button
             android:id="@+id/leftButton"
-            android:layout_width="75dp"
-            android:layout_height="64dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/left"
+            style="@style/Font"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_left_chevron"
             android:textSize="24sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/rightButton"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.85"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/rightButton"
-            android:layout_width="75dp"
-            android:layout_height="64dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/right"
+            style="@style/Font"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_right_chevron"
+
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
             app:layout_constraintVertical_bias="0.1" />
@@ -99,13 +101,15 @@
             app:layout_constraintGuide_percent="0.75" />
 
         <Button
+            style="@style/Font"
             android:id="@+id/returnButton"
             android:layout_width="300dp"
             android:layout_height="64dp"
-            android:fontFamily="@font/montserrat"
             android:textAllCaps="false"
             android:text="@string/new_picture"
-            android:textSize="24sp"
+            android:textSize="30sp"
+            android:background="@color/red"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

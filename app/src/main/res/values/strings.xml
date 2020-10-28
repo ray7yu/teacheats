@@ -1,6 +1,7 @@
 <resources>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="app_name">TeachEats</string>
+    <string name="welcome">Welcome!</string>
+    <string name="app_name">Teach Eats</string>
     <string name="help_button">Help</string>
     <string name="start_button">Start</string>
     <string name="new_button">New Picture?</string>
@@ -9,7 +10,7 @@
     <string name="home">Home</string>
     <string name="loading">Finding Food…</string>
     <string name="label">Label</string>
-    <string name="new_picture">Take New Picture?</string>
+    <string name="new_picture">New Picture?</string>
     <string name="left">L</string>
     <string name="right">R</string>
     <string name="description">This is a mobile application developed in Kotlin that can photograph a fruit and then return its label. It then teaches children about the fruit’s respective color, pronunciation, and origin.</string>

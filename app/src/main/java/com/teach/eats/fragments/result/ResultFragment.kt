@@ -2,6 +2,9 @@ package com.teach.eats.fragments.result
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Intent
+import android.media.MediaScannerConnection
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +19,7 @@ import androidx.navigation.findNavController
 import com.teach.eats.Photo
 import com.teach.eats.R
 import com.teach.eats.databinding.FragmentResultBinding
+import java.io.File
 
 
 class ResultFragment : Fragment() {
@@ -68,10 +72,19 @@ class ResultFragment : Fragment() {
             view.findNavController()
                 .navigate(R.id.action_resultFragment_to_foodNameFragment, arguments)
         }
+        binding.saveButton.setOnClickListener {
+            savePicture()
+        }
         //If no label, learn button is not visible
         if (arguments?.getString("label").toString() == "") {
             binding.learnButton.visibility = View.INVISIBLE
+            binding.saveButton.visibility = View.INVISIBLE
         }
         return binding.root
+    }
+    private fun savePicture(){
+        val photoPath = arguments?.getString("photoPath").toString()
+        val f = File(photoPath)
+        MediaScannerConnection.scanFile(context, arrayOf(photoPath), null,null)
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -87,7 +88,7 @@ class Learn {
                 }
             }
         }
-        fun setFoodSound(context: Context, listenButton: Button, label: String){
+        fun setFoodSound(context: Context, listenButton: ImageButton, label: String){
             val mp : MediaPlayer = when (label) {
                 "Apple!" -> MediaPlayer.create(context, R.raw.apple)
                 "Banana!" -> MediaPlayer.create(context, R.raw.banana)
@@ -152,7 +153,7 @@ class Learn {
                 }
             }
         }
-        fun setColorSound(context: Context, listenButton: Button, label: String){
+        fun setColorSound(context: Context, listenButton: ImageButton, label: String){
             val mp : MediaPlayer = when (label) {
                 "Apple!" -> MediaPlayer.create(context, R.raw.red)
                 "Banana!" -> MediaPlayer.create(context, R.raw.yellow)

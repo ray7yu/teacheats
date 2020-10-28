@@ -13,10 +13,10 @@
         tools:context=".fragments.LoadingFragment">
 
         <TextView
+            style="@style/Font"
             android:id="@+id/loadView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
             android:text="@string/loading"
             android:textSize="42sp"
             app:layout_constraintBottom_toBottomOf="parent"

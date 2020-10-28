@@ -11,35 +11,47 @@
         android:layout_height="match_parent"
         tools:context=".fragments.TitleFragment">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/teacheats"
+            app:layout_constraintBottom_toTopOf="@+id/title_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/title_header"
+            style="@style/Font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/app_name"
+            android:text="@string/welcome"
             android:textAlignment="center"
             android:textSize="42sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintVertical_bias="0.4" />
 
         <Button
             android:id="@+id/start_button"
+            style="@style/Font"
             android:layout_width="200dp"
-            android:layout_height="60dp"
+            android:layout_height="65dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/montserrat"
+            android:background="@color/start"
+            android:textColor="@android:color/white"
             android:text="@string/start_button"
             android:textAllCaps="false"
-            android:textSize="30sp"
+            android:textSize="35sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,16 +59,18 @@
             app:layout_constraintVertical_bias="0.95" />
 
         <Button
+            style="@style/Font"
             android:id="@+id/help_button"
             android:layout_width="200dp"
-            android:layout_height="60dp"
+            android:layout_height="65dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/montserrat"
+            android:background="@color/help"
+            android:textColor="@android:color/white"
             android:text="@string/help_button"
+            android:textSize="35sp"
             android:textAllCaps="false"
-            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

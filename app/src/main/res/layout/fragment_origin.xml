@@ -13,11 +13,11 @@
         tools:context=".fragments.result.FoodNameFragment">
 
         <TextView
+            style="@style/Font"
             android:id="@+id/foodNameTitle"
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/montserrat"
             android:text="Where did I come from?"
             android:textAlignment="center"
             android:textSize="36sp"
@@ -38,11 +38,11 @@
             app:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
+            style="@style/Font"
             android:id="@+id/foodNameView"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/montserrat"
             android:text="My old home"
             android:textAlignment="center"
             android:textSize="32sp"
@@ -54,14 +54,14 @@
 
         <Button
             android:id="@+id/leftButton"
-            android:layout_width="75dp"
-            android:layout_height="64dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/left"
+            style="@style/Font"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_left_chevron"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.85"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
             app:layout_constraintVertical_bias="0.1" />
@@ -81,13 +81,15 @@
             app:layout_constraintGuide_percent="0.75" />
 
         <Button
+            style="@style/Font"
             android:id="@+id/returnButton"
             android:layout_width="300dp"
             android:layout_height="64dp"
-            android:fontFamily="@font/montserrat"
             android:textAllCaps="false"
             android:text="@string/new_picture"
-            android:textSize="24sp"
+            android:textSize="30sp"
+            android:background="@color/red"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
