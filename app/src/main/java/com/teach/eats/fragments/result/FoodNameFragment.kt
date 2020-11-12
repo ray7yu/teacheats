@@ -16,6 +16,7 @@ import com.teach.eats.R
 import com.teach.eats.databinding.FragmentFoodNameBinding
 
 class FoodNameFragment : Fragment() {
+    private lateinit var results : Bundle
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,13 +29,21 @@ class FoodNameFragment : Fragment() {
             container,
             false
         )
+        results = Bundle()
+        if(savedInstanceState != null) {
+            results.putString("label", savedInstanceState.getString("label", ""))
+            results.putString("photoPath", savedInstanceState.getString("photoPath", ""))
+        } else {
+            results.putString("label", requireArguments().getString("label", ""))
+            results.putString("photoPath", requireArguments().getString("photoPath", ""))
+        }
         //Custom back pressed callback that also deletes photo
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     Log.d(ContentValues.TAG, "Fragment back pressed invoked")
-                    Photo.deleteImage(arguments)
+                    Photo.deleteImage(results)
                     if (isEnabled) {
                         isEnabled = false
                         requireActivity().onBackPressed()
@@ -45,13 +54,13 @@ class FoodNameFragment : Fragment() {
         //Sets up food picture and food name views
         Learn.chooseIcon(
             binding.foodPic,
-            arguments?.getString("label").toString()
+            results.getString("label").toString()
         )
         this.context?.let {
             Learn.chooseWord(
                 it,
                 binding.foodNameView,
-                arguments?.getString("label").toString()
+                results.getString("label").toString()
             )
         }
 
@@ -60,23 +69,28 @@ class FoodNameFragment : Fragment() {
             Learn.setFoodSound(
                 it,
                 binding.listenButton,
-                arguments?.getString("label").toString()
+                results.getString("label").toString()
             )
         }
 
         //Navigation for buttons
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController()
-                .navigate(R.id.action_foodNameFragment_to_resultFragment, arguments)
+                .navigate(R.id.action_foodNameFragment_to_resultFragment, results)
         }
         binding.rightButton.setOnClickListener { view: View ->
             view.findNavController()
-                .navigate(R.id.action_foodNameFragment_to_colorFragment, arguments)
+                .navigate(R.id.action_foodNameFragment_to_colorFragment, results)
         }
         binding.returnButton.setOnClickListener { view: View ->
-            Photo.deleteImage(arguments)
+            Photo.deleteImage(results)
             view.findNavController().navigate(R.id.action_foodNameFragment_to_titleFragment)
         }
         return binding.root
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("label", results.getString("label"))
+        outState.putString("photoPath", results.getString("photoPath"))
     }
 }

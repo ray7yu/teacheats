@@ -16,6 +16,7 @@ import com.teach.eats.R
 import com.teach.eats.databinding.FragmentColorBinding
 
 class ColorFragment : Fragment() {
+    private lateinit var results : Bundle
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,13 +29,21 @@ class ColorFragment : Fragment() {
             container,
             false
         )
+        results = Bundle()
+        if(savedInstanceState != null) {
+            results.putString("label", savedInstanceState.getString("label", ""))
+            results.putString("photoPath", savedInstanceState.getString("photoPath", ""))
+        } else {
+            results.putString("label", requireArguments().getString("label", ""))
+            results.putString("photoPath", requireArguments().getString("photoPath", ""))
+        }
         //Custom back pressed callback that also deletes photo
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     Log.d(ContentValues.TAG, "Fragment back pressed invoked")
-                    Photo.deleteImage(arguments)
+                    Photo.deleteImage(results)
                     if (isEnabled) {
                         isEnabled = false
                         requireActivity().onBackPressed()
@@ -46,28 +55,33 @@ class ColorFragment : Fragment() {
             Learn.chooseColor(
                 it,
                 binding.colorView,
-                arguments?.getString("label").toString()
+                results.getString("label").toString()
             )
         }
         this.context?.let {
             Learn.setColorSound(
                 it,
                 binding.listenButton,
-                arguments?.getString("label").toString()
+                results.getString("label").toString()
             )
         }
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController()
-                .navigate(R.id.action_colorFragment_to_foodNameFragment, arguments)
+                .navigate(R.id.action_colorFragment_to_foodNameFragment, results)
         }
         binding.rightButton.setOnClickListener { view: View ->
             view.findNavController()
-                .navigate(R.id.action_colorFragment_to_originFragment, arguments)
+                .navigate(R.id.action_colorFragment_to_originFragment, results)
         }
         binding.returnButton.setOnClickListener { view: View ->
-            Photo.deleteImage(arguments)
+            Photo.deleteImage(results)
             view.findNavController().navigate(R.id.action_colorFragment_to_titleFragment)
         }
         return binding.root
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("label", results.getString("label"))
+        outState.putString("photoPath", results.getString("photoPath"))
     }
 }
