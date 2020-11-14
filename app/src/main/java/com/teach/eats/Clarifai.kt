@@ -111,6 +111,75 @@ class Clarifai(
                     label = "Watermelon!"
                     break@loop
                 }
+                //Post Midterm Fruits
+                "avocado" -> {
+                    label = "Avocado!"
+                    break@loop
+                }
+                "blueberry" -> {
+                    label = "Blueberry!"
+                    break@loop
+                }
+                "cherry" -> {
+                    label = "Cherry!"
+                    break@loop
+                }
+                "coconut" -> {
+                    label = "Coconut!"
+                    break@loop
+                }
+                "dragonfruit" -> {
+                    label = "Dragonfruit!"
+                    break@loop
+                }
+                "durian" -> {
+                    label = "Durian!"
+                    break@loop
+                }
+                "grapefruit" -> {
+                    label = "Grapefruit!"
+                    break@loop
+                }
+                "guava" -> {
+                    label = "Guava!"
+                    break@loop
+                }
+                "kiwi" -> {
+                    label = "Kiwi!"
+                    break@loop
+                }
+                "lime" -> {
+                    label = "Lime!"
+                    break@loop
+                }
+                "lychee" -> {
+                    label = "Lychee!"
+                    break@loop
+                }
+                "papaya" -> {
+                    label = "Papaya!"
+                    break@loop
+                }
+                "passionfruit" -> {
+                    label = "Passionfruit!"
+                    break@loop
+                }
+                "pear" -> {
+                    label = "Pear!"
+                    break@loop
+                }
+                "persimmon" -> {
+                    label = "Persimmon!"
+                    break@loop
+                }
+                "pomegranate" -> {
+                    label = "Pomegranate!"
+                    break@loop
+                }
+                "raspberry" -> {
+                    label = "Raspberry!"
+                    break@loop
+                }
                 else -> {
                     continue@loop
                 }

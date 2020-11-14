@@ -52,17 +52,19 @@ class ColorFragment : Fragment() {
             }
         )
         this.context?.let {
-            Learn.chooseColor(
+            Learn.chooseText(
                 it,
                 binding.colorView,
-                results.getString("label").toString()
+                results.getString("label").toString(),
+                1
             )
         }
         this.context?.let {
-            Learn.setColorSound(
+            Learn.setSound(
                 it,
                 binding.listenButton,
-                results.getString("label").toString()
+                results.getString("label").toString(),
+                1
             )
         }
         binding.leftButton.setOnClickListener { view: View ->
