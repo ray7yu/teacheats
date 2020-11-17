@@ -25,17 +25,24 @@
             app:layout_constraintHorizontal_bias="0.474"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/foodPic"
-            android:layout_width="275dp"
-            android:layout_height="275dp"
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerFoodPic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            app:shimmer_base_alpha="1"
+            app:shimmer_highlight_alpha="0.5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodNameTitle"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:layout_constraintTop_toBottomOf="@+id/foodNameTitle">
+            <ImageView
+                android:id="@+id/foodPic"
+                android:layout_width="275dp"
+                android:layout_height="275dp"
+                app:srcCompat="@drawable/placeholder_image" />
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
 
         <TextView
             style="@style/Font"
@@ -49,7 +56,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodPic"
+            app:layout_constraintTop_toBottomOf="@+id/shimmerFoodPic"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button

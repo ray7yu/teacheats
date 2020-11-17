@@ -53,6 +53,7 @@ class OriginFragment : Fragment() {
         )
         //Sets origin picture
         Learn.chooseOrigin(
+            binding.shimmerFoodPic,
             binding.foodPic,
             results.getString("label").toString()
         )
