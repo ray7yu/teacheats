@@ -22,15 +22,12 @@ import java.util.*
 
 class TitleFragment : Fragment() {
     //Takes picture and has callback for result
-    var apiResult : PostWorkflowResultsResponse? = null
     private val getPicture =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
                 val newBundle = Bundle()
                 newBundle.putString("photoPath", currentPhotoPath)
                 Log.d("photoPath", currentPhotoPath)
-//                val apiCall = Clarifai(getApiSecret(), view, newBundle)
-//                apiCall.execute("Hi")
                 view?.findNavController()
                     ?.navigate(R.id.action_titleFragment_to_loadingFragment, newBundle)
 

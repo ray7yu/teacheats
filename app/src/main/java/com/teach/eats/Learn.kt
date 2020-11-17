@@ -1,316 +1,77 @@
 package com.teach.eats
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.media.MediaPlayer
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.facebook.shimmer.ShimmerFrameLayout
-import java.security.AccessController.getContext
 
 class Learn {
     companion object {
         val fruitMap = mapOf(
-            "Apple!" to "apple",
-            "Banana!" to "banana",
-            "Grape!" to "grape",
-            "Lemon!" to "lemon",
-            "Mango!" to "mango",
-            "Orange!" to "orange",
-            "Peach!" to "peach",
-            "Pineapple!" to "pineapple",
-            "Strawberry!" to "strawberry",
-            "Watermelon!" to "watermelon",
+            "Apple!" to Fruit("apple", R.drawable.ic_apple, "APPLE", "RED", R.color.red,false, R.raw.apple, R.raw.red),
+            "Banana!" to Fruit("banana", R.drawable.ic_banana, "BANANA", "YELLOW", R.color.yellow, true, R.raw.banana, R.raw.yellow),
+            "Grape!" to Fruit("grape", R.drawable.ic_grape, "GRAPE", "PURPLE", R.color.purple, false, R.raw.grape, R.raw.purple),
+            "Lemon!" to Fruit("lemon", R.drawable.ic_lemon, "LEMON", "YELLOW", R.color.yellow, true, R.raw.lemon, R.raw.yellow),
+            "Mango!" to Fruit("mango", R.drawable.ic_mango, "MANGO", "ORANGE", R.color.orange, false, R.raw.mango, R.raw.orange),
+            "Orange!" to Fruit("orange", R.drawable.ic_orange, "ORANGE", "ORANGE", R.color.orange, false, R.raw.orange, R.raw.orange),
+            "Peach!" to Fruit("peach", R.drawable.ic_peach, "PEACH", "PEACH", R.color.peach, false, R.raw.peach, R.raw.peach),
+            "Pineapple!" to Fruit("pineapple", R.drawable.ic_pineapple, "PINEAPPLE", "YELLOW", R.color.yellow, true, R.raw.pineapple, R.raw.yellow),
+            "Strawberry!" to Fruit("strawberry", R.drawable.ic_strawberry, "STRAWBERRY", "RED", R.color.red, false, R.raw.strawberry, R.raw.red),
+            "Watermelon!" to Fruit("watermelon", R.drawable.ic_watermelon, "WATERMELON", "GREEN", R.color.green, false, R.raw.watermelon, R.raw.green),
             //Post Midterm
-            "Avocado!" to "avocado",
-            "Blueberry!" to "blueberry",
-            "Cherry!" to "cherry",
-            "Coconut!" to "coconut",
-            "Dragonfruit!" to "dragonfruit",
-            "Durian!" to "durian",
-            "Grapefruit!" to "grapefruit",
-            "Guava!" to "guava",
-            "Kiwi!" to "kiwi",
-            "Lime!" to "lime",
-            "Lychee!" to "lychee",
-            "Papaya!" to "papaya",
-            "Passionfruit!" to "passionfruit",
-            "Pear!" to "pear",
-            "Persimmon!" to "persimmon",
-            "Pomegranate!" to "pomegranate",
-            "Raspberry!" to "raspberry"
+            "Avocado!" to Fruit("avocado", R.drawable.ic_avocado, "AVOCADO", "GREEN", R.color.green, false, R.raw.avocado, R.raw.green),
+            "Blueberry!" to Fruit("blueberry", R.drawable.ic_blueberry, "BLUEBERRY", "BLUE", R.color.blue, false, R.raw.blueberry, R.raw.blue),
+            "Cherry!" to Fruit("cherry", R.drawable.ic_cherry, "CHERRY", "RED", R.color.red, false, R.raw.cherry, R.raw.red),
+            "Coconut!" to Fruit("coconut", R.drawable.ic_coconut, "COCONUT", "BROWN", R.color.brown, false, R.raw.coconut, R.raw.brown),
+            "Dragonfruit!" to Fruit("dragonfruit", R.drawable.ic_dragonfruit, "DRAGONFRUIT", "PINK", R.color.pink, false, R.raw.dragonfruit, R.raw.pink),
+            "Durian!" to Fruit("durian", R.drawable.ic_durian, "DURIAN", "GREEN", R.color.green, false, R.raw.durian, R.raw.green),
+            "Grapefruit!" to Fruit("grapefruit", R.drawable.ic_grapefruit, "GRAPEFRUIT", "ORANGE", R.color.orange, false, R.raw.grapefruit, R.raw.orange),
+            "Guava!" to Fruit("guava", R.drawable.ic_guava, "GUAVA", "GREEN", R.color.green, false, R.raw.guava, R.raw.green),
+            "Kiwi!" to Fruit("kiwi", R.drawable.ic_kiwi, "KIWI", "BROWN", R.color.brown, false, R.raw.kiwi, R.raw.brown),
+            "Lime!" to Fruit("lime", R.drawable.ic_lime, "LIME", "GREEN", R.color.green, false, R.raw.lime, R.raw.green),
+            "Lychee!" to Fruit("lychee", R.drawable.ic_lychee, "LYCHEE", "RED", R.color.red, false, R.raw.lychee, R.raw.red),
+            "Papaya!" to Fruit("papaya", R.drawable.ic_papaya, "PAPAYA", "GREEN", R.color.green, false, R.raw.papaya, R.raw.green),
+            "Passionfruit!" to Fruit("passionfruit", R.drawable.ic_passionfruit, "PASSIONFRUIT", "PURPLE", R.color.purple, false, R.raw.passionfruit, R.raw.purple),
+            "Pear!" to Fruit("pear", R.drawable.ic_pear, "PEAR", "GREEN", R.color.green, false, R.raw.pear, R.raw.green),
+            "Persimmon!" to Fruit("persimmon", R.drawable.ic_persimmon, "PERSIMMON", "ORANGE", R.color.orange, false, R.raw.persimmon, R.raw.orange),
+            "Pomegranate!" to Fruit("pomegranate", R.drawable.ic_pomegranate, "POMEGRANATE", "RED", R.color.red, false, R.raw.pomegranate, R.raw.red),
+            "Raspberry!" to Fruit("raspberry", R.drawable.ic_raspberry, "RASPBERRY", "RED", R.color.red, false, R.raw.raspberry, R.raw.red)
         )
+        //Sets an icon as an image resource.
         fun chooseIcon(imageView: ImageView, label: String) {
-            when (label) {
-                "Apple!" -> imageView.setImageResource(R.drawable.ic_apple)
-                "Banana!" -> imageView.setImageResource(R.drawable.ic_banana)
-                "Grape!" -> imageView.setImageResource(R.drawable.ic_grapes)
-                "Lemon!" -> imageView.setImageResource(R.drawable.ic_lemon)
-                "Mango!" -> imageView.setImageResource(R.drawable.ic_mango)
-                "Orange!" -> imageView.setImageResource(R.drawable.ic_orange)
-                "Peach!" -> imageView.setImageResource(R.drawable.ic_peach)
-                "Pineapple!" -> imageView.setImageResource(R.drawable.ic_pineapple)
-                "Strawberry!" -> imageView.setImageResource(R.drawable.ic_strawberry)
-                "Watermelon!" -> imageView.setImageResource(R.drawable.ic_watermelon)
-                //Post Midterm
-                "Avocado!" -> imageView.setImageResource(R.drawable.ic_avocado)
-                "Blueberry!" -> imageView.setImageResource(R.drawable.ic_blueberry)
-                "Cherry!" -> imageView.setImageResource(R.drawable.ic_cherry)
-                "Coconut!" -> imageView.setImageResource(R.drawable.ic_coconut)
-                "Dragonfruit!" -> imageView.setImageResource(R.drawable.ic_dragonfruit)
-                "Durian!" -> imageView.setImageResource(R.drawable.ic_durian)
-                "Grapefruit!" -> imageView.setImageResource(R.drawable.ic_grapefruit)
-                "Guava!" -> imageView.setImageResource(R.drawable.ic_guava)
-                "Kiwi!" -> imageView.setImageResource(R.drawable.ic_kiwi)
-                "Lime!" -> imageView.setImageResource(R.drawable.ic_lime)
-                "Lychee!" -> imageView.setImageResource(R.drawable.ic_lychee)
-                "Papaya!" -> imageView.setImageResource(R.drawable.ic_papaya)
-                "Passionfruit!" -> imageView.setImageResource(R.drawable.ic_passionfruit)
-                "Pear!" -> imageView.setImageResource(R.drawable.ic_pear)
-                "Persimmon!" -> imageView.setImageResource(R.drawable.ic_persimmon)
-                "Pomegranate!" -> imageView.setImageResource(R.drawable.ic_pomegranate)
-                "Raspberry!" -> imageView.setImageResource(R.drawable.ic_raspberry)
-            }
+            fruitMap[label]?.icon?.let { imageView.setImageResource(it) }
         }
-
+        //Builds an image URL, then makes an asynchronous call to load image into view.
         fun chooseOrigin(shimmerView:ShimmerFrameLayout, imageView: ImageView, label: String) {
             var fruitURL: String = "https://teach-eats-fruit-pics.s3-us-west-1.amazonaws.com/"
-            fruitURL += this.fruitMap[label] + "_origin.png"
+            fruitURL += (this.fruitMap[label] ?: error("")).name + "_origin.png"
             Origin(imageView, shimmerView).execute(fruitURL)
-//            when (label) {
-//                "Apple!" -> imageView.setImageResource(R.drawable.apple_tree)
-//                "Banana!" -> imageView.setImageResource(R.drawable.banana_tree)
-//                "Grape!" -> imageView.setImageResource(R.drawable.grape_origin)
-//                "Lemon!" -> imageView.setImageResource(R.drawable.lemon_tree)
-//                "Mango!" -> imageView.setImageResource(R.drawable.mango_tree)
-//                "Orange!" -> imageView.setImageResource(R.drawable.orange_tree)
-//                "Peach!" -> imageView.setImageResource(R.drawable.peach_tree)
-//                "Pineapple!" -> imageView.setImageResource(R.drawable.pineapple_origin)
-//                "Strawberry!" -> imageView.setImageResource(R.drawable.strawberry_origin)
-//                "Watermelon!" -> imageView.setImageResource(R.drawable.watermelon_origin)
-//            }
         }
-
+        //Chooses fruit name or fruit color as text, depending on the option passed in.
         fun chooseText(context: Context, textView: TextView, label: String, option: Int) {
-            when (label) {
-                "Apple!" -> {
-                    textView.text = if (option == 0) "APPLE" else "RED"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
-                }
-                "Banana!" -> {
-                    textView.text = if (option == 0) "BANANA" else "YELLOW"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
-                    textView.setTextColor(Color.GRAY)
-                }
-                "Grape!" -> {
-                    textView.text = if (option == 0) "GRAPE" else "PURPLE"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.purple))
-                }
-                "Lemon!" -> {
-                    textView.text = if (option == 0) "LEMON" else "YELLOW"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
-                    textView.setTextColor(Color.GRAY)
-                }
-                "Mango!" -> {
-                    textView.text = if (option == 0) "MANGO" else "ORANGE"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
-                }
-                "Orange!" -> {
-                    textView.text = "ORANGE"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
-                }
-                "Peach!" -> {
-                    textView.text = "PEACH"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.peach))
-                }
-                "Pineapple!" -> {
-                    textView.text = if (option == 0) "PINEAPPLE" else "YELLOW"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
-                    textView.setTextColor(Color.GRAY)
-                }
-                "Strawberry!" -> {
-                    textView.text = if (option == 0) "STRAWBERRY" else "RED"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
-                }
-                "Watermelon!" -> {
-                    textView.text = if (option == 0) "WATERMELON" else "GREEN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
-                }
-                //Post Midterm
-                "Avocado!" -> {
-                    textView.text = if (option == 0) "AVOCADO" else "GREEN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
-                }
-                "Blueberry!" -> {
-                    textView.text = if (option == 0) "BLUEBERRY" else "BLUE"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.blue))
-                }
-                "Cherry!" -> {
-                    textView.text = if (option == 0) "CHERRY" else "RED"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
-                }
-                "Coconut!" -> {
-                    textView.text = if (option == 0) "COCONUT" else "BROWN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.brown))
-                }
-                "Dragonfruit!" -> {
-                    textView.text = if (option == 0) "DRAGONFRUIT" else "PINK"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.pink))
-                }
-                "Durian!" -> {
-                    textView.text = if (option == 0) "DURIAN" else "GREEN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
-                }
-                "Grapefruit!" -> {
-                    textView.text = if (option == 0) "GRAPEFRUIT" else "ORANGE"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
-                }
-                "Guava!" -> {
-                    textView.text = if (option == 0) "GUAVA" else "GREEN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
-                }
-                "Kiwi!" -> {
-                    textView.text = if (option == 0) "KIWI" else "BROWN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.brown))
-                }
-                "Lime!" -> {
-                    textView.text = if (option == 0) "LIME" else "GREEN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
-                }
-                "Lychee!" -> {
-                    textView.text = if (option == 0) "LYCHEE" else "RED"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
-                }
-                "Papaya!" -> {
-                    textView.text = if (option == 0) "PAPAYA" else "GREEN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
-                }
-                "Passionfruit!" -> {
-                    textView.text = if (option == 0) "PASSIONFRUIT" else "PURPLE"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.purple))
-                }
-                "Pear!" -> {
-                    textView.text = if (option == 0) "PEAR" else "GREEN"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
-                }
-                "Persimmon!" -> {
-                    textView.text = if (option == 0) "PERSIMMON" else "ORANGE"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
-                }
-                "Pomegranate!" -> {
-                    textView.text = if (option == 0) "POMEGRANATE" else "RED"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
-                }
-                "Raspberry!" -> {
-                    textView.text = if (option == 0) "RASPBERRY" else "RED"
-                    textView.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
-                }
+            //Fruit name
+            textView.text = if(option == 0) fruitMap[label]?.textName else fruitMap[label]?.colorName
+            //Fruit color
+            fruitMap[label]?.colorRes?.let {
+                ContextCompat.getColor(context,
+                    it
+                )
+            }?.let { textView.setBackgroundColor(it) }
+            //If clashing colors, text is turned black.
+            if(fruitMap[label]?.changeTextColor!!){
+                textView.setTextColor(Color.BLACK)
             }
         }
-
+        //Sets sound to fruit or color audio, depending on the option passed in.
         fun setSound(context: Context, listenButton: ImageButton, label: String, option: Int) {
-            val mp: MediaPlayer = when (label) {
-                "Apple!" -> MediaPlayer.create(context, if (option == 0) R.raw.apple else R.raw.red)
-                "Banana!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.banana else R.raw.yellow
-                )
-                "Grape!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.grape else R.raw.purple
-                )
-                "Lemon!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.lemon else R.raw.yellow
-                )
-                "Mango!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.mango else R.raw.orange
-                )
-                "Orange!" -> MediaPlayer.create(context, R.raw.orange)
-                "Peach!" -> MediaPlayer.create(context, R.raw.peach)
-                "Pineapple!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.pineapple else R.raw.yellow
-                )
-                "Strawberry!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.strawberry else R.raw.red
-                )
-                "Watermelon!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.watermelon else R.raw.green
-                )
-                //Post Midterm
-                "Avocado!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.avocado else R.raw.green
-                )
-                "Blueberry!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.blueberry else R.raw.blue
-                )
-                "Cherry!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.cherry else R.raw.red
-                )
-                "Coconut!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.coconut else R.raw.brown
-                )
-                "Dragonfruit!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.dragonfruit else R.raw.pink
-                )
-                "Durian!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.durian else R.raw.green
-                )
-                "Grapefruit!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.grapefruit else R.raw.orange
-                )
-                "Guava!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.guava else R.raw.green
-                )
-                "Kiwi!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.kiwi else R.raw.brown)
-                "Lime!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.lime else R.raw.green)
-                "Lychee!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.lychee else R.raw.red
-                )
-                "Papaya!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.papaya else R.raw.green
-                )
-                "Passionfruit!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.passionfruit else R.raw.purple
-                )
-                "Pear!" -> MediaPlayer.create(context, if (option == 0) R.raw.pear else R.raw.green)
-                "Persimmon!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.persimmon else R.raw.orange
-                )
-                "Pomegranate!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.pomegranate else R.raw.red
-                )
-                "Raspberry!" -> MediaPlayer.create(
-                    context,
-                    if (option == 0) R.raw.raspberry else R.raw.red
-                )
-                else -> MediaPlayer.create(context, R.raw.apple)
-            }
+            val mp: MediaPlayer = MediaPlayer.create(
+                context,
+                if (option == 0) (fruitMap[label] ?: error("")).fruitAudio else (fruitMap[label] ?: error("")).colorAudio
+            )
             listenButton.setOnClickListener {
                 mp.start()
             }
