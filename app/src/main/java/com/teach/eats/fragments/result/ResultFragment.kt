@@ -1,28 +1,38 @@
 package com.teach.eats.fragments.result
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.ContentValues.TAG
-import android.content.Intent
-import android.media.MediaScannerConnection
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.teach.eats.Photo
 import com.teach.eats.R
 import com.teach.eats.databinding.FragmentResultBinding
-import java.io.File
+import okio.buffer
+import okio.sink
+import java.io.IOException
+import java.io.OutputStream
+
 
 class ResultFragment : Fragment() {
     private lateinit var results : Bundle
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -95,9 +105,70 @@ class ResultFragment : Fragment() {
         outState.putString("label", results.getString("label"))
         outState.putString("photoPath", results.getString("photoPath"))
     }
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun savePicture(){
         val photoPath = results.getString("photoPath").toString()
-        val f = File(photoPath)
-        MediaScannerConnection.scanFile(context, arrayOf(photoPath), null,null)
+        Log.i("Path", photoPath)
+        //Requests permission
+
+        //Saves image to gallery
+        val bitmap = BitmapFactory.decodeFile(photoPath, null)
+        val ei = ExifInterface(photoPath)
+        val orientation: Int = ei.getAttributeInt(
+            ExifInterface.TAG_ORIENTATION,
+            ExifInterface.ORIENTATION_UNDEFINED
+        )
+        val rotatedBitmap = when (orientation) {
+            ExifInterface.ORIENTATION_ROTATE_90 -> Photo.rotateImage(bitmap, 90F)
+            ExifInterface.ORIENTATION_ROTATE_180 -> Photo.rotateImage(
+                bitmap,
+                180F
+            )
+            ExifInterface.ORIENTATION_ROTATE_270 -> Photo.rotateImage(
+                bitmap,
+                270F
+            )
+            ExifInterface.ORIENTATION_NORMAL -> bitmap
+            else -> bitmap
+        }
+
+        val relativeLocation = Environment.DIRECTORY_PICTURES + "/teacheats/"
+        val contentValues = ContentValues().apply {
+            put(
+                MediaStore.Images.Media.DISPLAY_NAME,
+                System.currentTimeMillis().toString() + " : Fruit.jpg"
+            )
+            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+            put(MediaStore.Images.Media.RELATIVE_PATH, relativeLocation)
+        }
+        val resolver = context?.contentResolver
+        var stream : OutputStream? = null
+        var uri : Uri? = null
+        try {
+            val contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            if (resolver != null) {
+                uri = resolver.insert(contentUri, contentValues)!!
+            }
+            if (uri == null) {
+                throw IOException("Failed to create new MediaStore record.")
+            }
+            if (resolver != null) {
+                stream = resolver.openOutputStream(uri)!!
+            }
+            if (stream == null) {
+                throw IOException("Failed to get output stream.")
+            }
+            if (!rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)) {
+                throw IOException("Failed to save bitmap.")
+            }
+        } catch (e: IOException) {
+            if (uri != null) {
+                // Don't leave an orphan entry in the MediaStore
+                resolver?.delete(uri, null, null)
+            }
+            throw e
+        } finally {
+            stream?.close()
+        }
     }
 }

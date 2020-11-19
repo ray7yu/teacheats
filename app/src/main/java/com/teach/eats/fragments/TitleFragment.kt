@@ -64,9 +64,9 @@ class TitleFragment : Fragment() {
     @Throws(IOException::class)
     private fun createImageFile(): File {
         // Creates image file name
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val timeStamp: String = SimpleDateFormat.getDateTimeInstance().format(Date())
         val storageDir: File? = activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-//        val storageDir: File? = activity?.getExternalStorageDir(Environment.DIRECTORY_PICTURES)
+//        val storageDir: File? = activity?.getExternalStorageDirectory(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
             "JPEG_${timeStamp}_", /* prefix */
             ".jpg", /* suffix */

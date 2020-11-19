@@ -46,7 +46,6 @@ class Photo {
                 inSampleSize = scaleFactor
 //                inPurgeable = true
             }
-
             BitmapFactory.decodeFile(result, bmOptions)?.also { bitmap ->
                 //Based on case, rotate picture using EXIF orientation data
                 val ei = ExifInterface(result)
@@ -54,7 +53,7 @@ class Photo {
                     ExifInterface.TAG_ORIENTATION,
                     ExifInterface.ORIENTATION_UNDEFINED
                 )
-                val rotatedBitmap: Bitmap ? = when (orientation) {
+                val rotatedBitmap = when (orientation) {
                     ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90F)
                     ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap,
                         180F
@@ -67,12 +66,6 @@ class Photo {
                 }
                 binding.foodPicture.setImageBitmap(rotatedBitmap)
             }
-//            Old Method
-//            val imgFile = File(result)
-//            if (imgFile.exists()) {
-//                val myImage: ImageView = binding.foodPicture
-//                myImage.setImageURI(Uri.fromFile(imgFile))
-//            }
         }
 
         //Delete image when choosing new one
@@ -86,11 +79,13 @@ class Photo {
             val deleted = imageFile.delete()
             if (!deleted) {
                 Log.d("Error", "Not deleted")
+            } else {
+                Log.d("Success", "Image deleted")
             }
         }
 
         //Rotates bitmap based on angle
-        private fun rotateImage(source: Bitmap, angle: Float): Bitmap? {
+        fun rotateImage(source: Bitmap, angle: Float): Bitmap {
             val matrix = Matrix()
             matrix.postRotate(angle)
             return Bitmap.createBitmap(
