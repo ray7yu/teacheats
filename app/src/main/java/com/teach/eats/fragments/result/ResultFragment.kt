@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
@@ -24,8 +25,6 @@ import androidx.navigation.findNavController
 import com.teach.eats.Photo
 import com.teach.eats.R
 import com.teach.eats.databinding.FragmentResultBinding
-import okio.buffer
-import okio.sink
 import java.io.IOException
 import java.io.OutputStream
 
@@ -111,27 +110,10 @@ class ResultFragment : Fragment() {
         Log.i("Path", photoPath)
         //Requests permission
 
-        //Saves image to gallery
-        val bitmap = BitmapFactory.decodeFile(photoPath, null)
-        val ei = ExifInterface(photoPath)
-        val orientation: Int = ei.getAttributeInt(
-            ExifInterface.TAG_ORIENTATION,
-            ExifInterface.ORIENTATION_UNDEFINED
-        )
-        val rotatedBitmap = when (orientation) {
-            ExifInterface.ORIENTATION_ROTATE_90 -> Photo.rotateImage(bitmap, 90F)
-            ExifInterface.ORIENTATION_ROTATE_180 -> Photo.rotateImage(
-                bitmap,
-                180F
-            )
-            ExifInterface.ORIENTATION_ROTATE_270 -> Photo.rotateImage(
-                bitmap,
-                270F
-            )
-            ExifInterface.ORIENTATION_NORMAL -> bitmap
-            else -> bitmap
-        }
+        //Loads bitmap from app storage
+        val rotatedBitmap = Photo.loadRotatedBitmap(photoPath, null)
 
+        //Saves image to gallery
         val relativeLocation = Environment.DIRECTORY_PICTURES + "/teacheats/"
         val contentValues = ContentValues().apply {
             put(
@@ -170,5 +152,7 @@ class ResultFragment : Fragment() {
         } finally {
             stream?.close()
         }
+        //Display Toast that says image was saved
+        Toast.makeText(context, "Image was saved to gallery", Toast.LENGTH_SHORT).show()
     }
 }

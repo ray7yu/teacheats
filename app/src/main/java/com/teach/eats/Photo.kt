@@ -46,26 +46,8 @@ class Photo {
                 inSampleSize = scaleFactor
 //                inPurgeable = true
             }
-            BitmapFactory.decodeFile(result, bmOptions)?.also { bitmap ->
-                //Based on case, rotate picture using EXIF orientation data
-                val ei = ExifInterface(result)
-                val orientation: Int = ei.getAttributeInt(
-                    ExifInterface.TAG_ORIENTATION,
-                    ExifInterface.ORIENTATION_UNDEFINED
-                )
-                val rotatedBitmap = when (orientation) {
-                    ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90F)
-                    ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap,
-                        180F
-                    )
-                    ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap,
-                        270F
-                    )
-                    ExifInterface.ORIENTATION_NORMAL -> bitmap
-                    else -> bitmap
-                }
-                binding.foodPicture.setImageBitmap(rotatedBitmap)
-            }
+            val rotatedBitmap = loadRotatedBitmap(result, bmOptions)
+            binding.foodPicture.setImageBitmap(rotatedBitmap)
         }
 
         //Delete image when choosing new one
@@ -92,6 +74,29 @@ class Photo {
                 source, 0, 0, source.width, source.height,
                 matrix, true
             )
+        }
+        //Loads a rotated bitmap from an image path
+        fun loadRotatedBitmap(path: String, options: BitmapFactory.Options?): Bitmap {
+            val bitmap = BitmapFactory.decodeFile(path, options)
+            //Based on case, rotate picture using EXIF orientation data
+            val ei = ExifInterface(path)
+            val orientation: Int = ei.getAttributeInt(
+                ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_UNDEFINED
+            )
+            return when (orientation) {
+                ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90F)
+                ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(
+                    bitmap,
+                    180F
+                )
+                ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(
+                    bitmap,
+                    270F
+                )
+                ExifInterface.ORIENTATION_NORMAL -> bitmap
+                else -> bitmap
+            }
         }
     }
 }
