@@ -28,12 +28,25 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_width="225dp"
-            android:layout_height="158dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.536"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loadView"
-            app:layout_constraintVertical_bias="0.245" />
+            app:layout_constraintVertical_bias="0.110000014" />
+
+        <ImageView
+            android:id="@+id/tradeCharacter"
+            android:layout_width="105dp"
+            android:layout_height="140dp"
+            android:src="@drawable/trade_character"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.253"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.69" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

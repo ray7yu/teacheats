@@ -59,7 +59,6 @@ class TitleFragment : Fragment() {
     }
 
     lateinit var currentPhotoPath: String
-
     //Creates a file and filepath for the image
     @Throws(IOException::class)
     private fun createImageFile(): File {

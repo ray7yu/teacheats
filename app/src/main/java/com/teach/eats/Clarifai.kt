@@ -144,7 +144,7 @@ class Clarifai(
                     label = "Guava!"
                     break@loop
                 }
-                "kiwi" -> {
+                "kiwi fruit" -> {
                     label = "Kiwi!"
                     break@loop
                 }
