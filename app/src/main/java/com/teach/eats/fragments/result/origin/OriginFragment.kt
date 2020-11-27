@@ -1,4 +1,4 @@
-package com.teach.eats.fragments.result
+package com.teach.eats.fragments.result.origin
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -10,12 +10,12 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.teach.eats.Learn
-import com.teach.eats.Photo
+import com.teach.eats.functions.Learn
+import com.teach.eats.functions.Photo
 import com.teach.eats.R
-import com.teach.eats.databinding.FragmentColorBinding
+import com.teach.eats.databinding.FragmentOriginBinding
 
-class ColorFragment : Fragment() {
+class OriginFragment : Fragment() {
     private lateinit var results : Bundle
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,9 +23,9 @@ class ColorFragment : Fragment() {
     ): View? {
 
         //Inflates and binds layout to fragment
-        val binding = DataBindingUtil.inflate<FragmentColorBinding>(
+        val binding = DataBindingUtil.inflate<FragmentOriginBinding>(
             inflater,
-            R.layout.fragment_color,
+            R.layout.fragment_origin,
             container,
             false
         )
@@ -51,33 +51,19 @@ class ColorFragment : Fragment() {
                 }
             }
         )
-        this.context?.let {
-            Learn.chooseText(
-                it,
-                binding.colorView,
-                results.getString("label").toString(),
-                1
-            )
-        }
-        this.context?.let {
-            Learn.setSound(
-                it,
-                binding.listenButton,
-                results.getString("label").toString(),
-                1
-            )
-        }
+        //Sets origin picture
+        Learn.chooseOrigin(
+            binding.shimmerFoodPic,
+            binding.foodPic,
+            results.getString("label").toString()
+        )
+        //Navigation for buttons
         binding.leftButton.setOnClickListener { view: View ->
-            view.findNavController()
-                .navigate(R.id.action_colorFragment_to_foodNameFragment, results)
-        }
-        binding.rightButton.setOnClickListener { view: View ->
-            view.findNavController()
-                .navigate(R.id.action_colorFragment_to_originFragment, results)
+            view.findNavController().navigate(R.id.action_originFragment_to_colorFragment, results)
         }
         binding.returnButton.setOnClickListener { view: View ->
             Photo.deleteImage(results)
-            view.findNavController().navigate(R.id.action_colorFragment_to_titleFragment)
+            view.findNavController().navigate(R.id.action_originFragment_to_titleFragment)
         }
         return binding.root
     }

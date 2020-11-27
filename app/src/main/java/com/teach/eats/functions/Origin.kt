@@ -1,4 +1,4 @@
-package com.teach.eats
+package com.teach.eats.functions
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

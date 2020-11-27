@@ -1,4 +1,4 @@
-package com.teach.eats.fragments
+package com.teach.eats.fragments.title
 
 import android.net.Uri
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.clarifai.grpc.api.*
 import com.teach.eats.R
 import com.teach.eats.databinding.FragmentTitleBinding
 import java.io.File

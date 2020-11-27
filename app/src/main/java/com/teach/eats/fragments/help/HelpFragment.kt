@@ -1,4 +1,4 @@
-package com.teach.eats.fragments
+package com.teach.eats.fragments.help
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

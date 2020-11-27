@@ -1,4 +1,4 @@
-package com.teach.eats
+package com.teach.eats.functions
 
 import android.os.AsyncTask
 import android.os.Build
@@ -11,6 +11,7 @@ import com.clarifai.grpc.api.*
 import com.clarifai.grpc.api.status.StatusCode
 import com.teach.eats.databinding.FragmentLoadingBinding
 import com.google.protobuf.ByteString
+import com.teach.eats.R
 import io.grpc.Channel
 import java.io.File
 import java.nio.file.Files

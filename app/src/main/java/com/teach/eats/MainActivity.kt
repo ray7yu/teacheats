@@ -18,7 +18,7 @@ import java.io.File
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    lateinit var dialog: AlertDialog
+    lateinit var alert: AlertDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
@@ -37,21 +37,22 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
     }
 
-    override fun onStart() {
-        super.onStart()
-        dialog = buildDialog(this)
+    override fun onResume() {
+        super.onResume()
+        alert = buildDialog(this)
         if(!isConnected(this)){
-            dialog.show()
+            Log.i("Internet", "No Internet")
+            alert.show()
         }
     }
     //Checks if there is an internet connection
     private fun isConnected(context: Context): Boolean {
-        var result = false
+        val result: Boolean
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val networkCapabilities = cm.activeNetwork ?: return false
-            val actNw =
-                cm.getNetworkCapabilities(networkCapabilities) ?: return false
+            val actNw = cm.getNetworkCapabilities(networkCapabilities) ?: return false
             result = when {
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
@@ -59,17 +60,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         } else {
-            cm.run {
-                cm.activeNetworkInfo?.run {
-                    result = when (type) {
-                        ConnectivityManager.TYPE_WIFI -> true
-                        ConnectivityManager.TYPE_MOBILE -> true
-                        ConnectivityManager.TYPE_ETHERNET -> true
-                        else -> false
-                    }
-
-                }
-            }
+            return cm.activeNetworkInfo != null && cm.activeNetworkInfo!!.isConnectedOrConnecting
         }
         return result
     }
@@ -77,16 +68,16 @@ class MainActivity : AppCompatActivity() {
     private fun buildDialog(c: Context): AlertDialog {
         val dialog: AlertDialog = AlertDialog.Builder(c).create()
         dialog.setTitle("No Internet Connection")
-        dialog.setMessage("App requires Mobile Data or Wifi. Press ok to Exit")
+        dialog.setMessage("App requires Mobile Data or Wifi. Press OK to Exit")
         dialog.setCancelable(false)
-        dialog.setButton(Dialog.BUTTON_POSITIVE,"Ok") { dialog, which ->
-            dialog.dismiss()
+        dialog.setButton(Dialog.BUTTON_POSITIVE,"OK") { _, _ ->
             finish()
         }
         return dialog
     }
     override fun onPause() {
         super.onPause()
-        dialog.dismiss()
+        Log.i("dialog", "was dismissed")
+        alert.dismiss()
     }
 }

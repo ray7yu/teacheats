@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/titleFragment"
-        android:name="com.teach.eats.fragments.TitleFragment"
+        android:name="com.teach.eats.fragments.title.TitleFragment"
         android:label="fragment_title"
         tools:layout="@layout/fragment_title" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/helpFragment"
-        android:name="com.teach.eats.fragments.HelpFragment"
+        android:name="com.teach.eats.fragments.help.HelpFragment"
         android:label="HelpFragment"
         tools:layout="@layout/fragment_help">
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/loadingFragment"
-        android:name="com.teach.eats.fragments.LoadingFragment"
+        android:name="com.teach.eats.fragments.loading.LoadingFragment"
         android:label="fragment_loading"
         tools:layout="@layout/fragment_loading" >
         <argument
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodNameFragment"
-        android:name="com.teach.eats.fragments.result.FoodNameFragment"
+        android:name="com.teach.eats.fragments.result.foodName.FoodNameFragment"
         android:label="fragment_food_name"
         tools:layout="@layout/fragment_food_name" >
         <argument
@@ -94,7 +94,7 @@
     </fragment>
     <fragment
         android:id="@+id/colorFragment"
-        android:name="com.teach.eats.fragments.result.ColorFragment"
+        android:name="com.teach.eats.fragments.result.color.ColorFragment"
         android:label="fragment_color"
         tools:layout="@layout/fragment_color" >
         <argument
@@ -121,7 +121,7 @@
     </fragment>
     <fragment
         android:id="@+id/originFragment"
-        android:name="com.teach.eats.fragments.result.OriginFragment"
+        android:name="com.teach.eats.fragments.result.origin.OriginFragment"
         android:label="fragment_origin"
         tools:layout="@layout/fragment_origin" >
         <argument

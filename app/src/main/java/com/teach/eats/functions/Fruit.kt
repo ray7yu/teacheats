@@ -1,4 +1,4 @@
-package com.teach.eats
+package com.teach.eats.functions
 
 data class Fruit (
     val name: String,

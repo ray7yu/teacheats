@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -22,7 +20,7 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.teach.eats.Photo
+import com.teach.eats.functions.Photo
 import com.teach.eats.R
 import com.teach.eats.databinding.FragmentResultBinding
 import java.io.IOException
