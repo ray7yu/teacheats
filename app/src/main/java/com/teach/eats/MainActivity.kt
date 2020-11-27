@@ -3,6 +3,7 @@ package com.teach.eats
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -11,6 +12,7 @@ import android.os.Environment
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.teach.eats.databinding.ActivityMainBinding
 import java.io.File
