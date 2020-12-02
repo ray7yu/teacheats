@@ -29,14 +29,8 @@ class OriginFragment : Fragment() {
             container,
             false
         )
-        results = Bundle()
-        if(savedInstanceState != null) {
-            results.putString("label", savedInstanceState.getString("label", ""))
-            results.putString("photoPath", savedInstanceState.getString("photoPath", ""))
-        } else {
-            results.putString("label", requireArguments().getString("label", ""))
-            results.putString("photoPath", requireArguments().getString("photoPath", ""))
-        }
+        results = setResult(savedInstanceState)
+
         //Custom back pressed callback that also deletes photo
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -67,9 +61,24 @@ class OriginFragment : Fragment() {
         }
         return binding.root
     }
+
+    //Saves the arguments when fragment is stopped
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("label", results.getString("label"))
         outState.putString("photoPath", results.getString("photoPath"))
+    }
+
+    //Restores or initializes the arguments when fragment is started
+    private fun setResult(savedInstanceState: Bundle?) : Bundle {
+        val result = Bundle()
+        if(savedInstanceState != null) {
+            result.putString("label", savedInstanceState.getString("label", ""))
+            result.putString("photoPath", savedInstanceState.getString("photoPath", ""))
+        } else {
+            result.putString("label", requireArguments().getString("label", ""))
+            result.putString("photoPath", requireArguments().getString("photoPath", ""))
+        }
+        return result
     }
 }

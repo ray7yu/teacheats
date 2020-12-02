@@ -12,6 +12,7 @@ import com.teach.eats.R
 
 class Learn {
     companion object {
+        //Map that contains the respective image, color, audio, icon, for each fruit
         val fruitMap = mapOf(
             "Apple!" to Fruit("apple",
                 R.drawable.ic_apple, "APPLE", "RED",

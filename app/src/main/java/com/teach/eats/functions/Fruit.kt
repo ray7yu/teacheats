@@ -1,5 +1,6 @@
 package com.teach.eats.functions
 
+//Class that has each fruit's attributes
 data class Fruit (
     val name: String,
     val icon: Int,

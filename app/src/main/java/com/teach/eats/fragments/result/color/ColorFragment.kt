@@ -29,14 +29,7 @@ class ColorFragment : Fragment() {
             container,
             false
         )
-        results = Bundle()
-        if(savedInstanceState != null) {
-            results.putString("label", savedInstanceState.getString("label", ""))
-            results.putString("photoPath", savedInstanceState.getString("photoPath", ""))
-        } else {
-            results.putString("label", requireArguments().getString("label", ""))
-            results.putString("photoPath", requireArguments().getString("photoPath", ""))
-        }
+        results = setResult(savedInstanceState)
         //Custom back pressed callback that also deletes photo
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -51,7 +44,21 @@ class ColorFragment : Fragment() {
                 }
             }
         )
-        this.context?.let {
+        setUpUI(this, binding)
+        setUpNavigation(binding)
+        return binding.root
+    }
+
+    //Saves the arguments when fragment is stopped
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("label", results.getString("label"))
+        outState.putString("photoPath", results.getString("photoPath"))
+    }
+
+    //Sets up the UI for the fragment
+    private fun setUpUI(colorFragment: ColorFragment, binding: FragmentColorBinding){
+        colorFragment.context?.let {
             Learn.chooseText(
                 it,
                 binding.colorView,
@@ -59,7 +66,7 @@ class ColorFragment : Fragment() {
                 1
             )
         }
-        this.context?.let {
+        colorFragment.context?.let {
             Learn.setSound(
                 it,
                 binding.listenButton,
@@ -67,6 +74,10 @@ class ColorFragment : Fragment() {
                 1
             )
         }
+    }
+
+    //Sets up the navigation between fragments
+    private fun setUpNavigation(binding: FragmentColorBinding) {
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController()
                 .navigate(R.id.action_colorFragment_to_foodNameFragment, results)
@@ -79,11 +90,18 @@ class ColorFragment : Fragment() {
             Photo.deleteImage(results)
             view.findNavController().navigate(R.id.action_colorFragment_to_titleFragment)
         }
-        return binding.root
     }
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("label", results.getString("label"))
-        outState.putString("photoPath", results.getString("photoPath"))
+
+    //Restores or initializes the arguments when fragment is started
+    private fun setResult(savedInstanceState: Bundle?) : Bundle {
+        val result = Bundle()
+        if(savedInstanceState != null) {
+            result.putString("label", savedInstanceState.getString("label", ""))
+            result.putString("photoPath", savedInstanceState.getString("photoPath", ""))
+        } else {
+            result.putString("label", requireArguments().getString("label", ""))
+            result.putString("photoPath", requireArguments().getString("photoPath", ""))
+        }
+        return result
     }
 }

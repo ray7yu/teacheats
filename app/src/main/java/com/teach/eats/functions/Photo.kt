@@ -13,6 +13,7 @@ import java.io.File
 
 class Photo {
     companion object {
+        //Obtains the label from the arguments and sets the Text to its value
         fun getLabel(binding: FragmentResultBinding, arguments: Bundle?) {
             var label = arguments?.getString("label").toString()
             if(label == ""){
@@ -21,7 +22,8 @@ class Photo {
             val myResult: TextView = binding.labelView
             myResult.text = label
         }
-        //Finds image
+
+        //Obtains image by using the photoPath and then sets the ImageView to the image
         fun getImage(binding: FragmentResultBinding, arguments: Bundle?) {
             val result = arguments?.getString("photoPath").toString()
             if (result == "") {
@@ -75,6 +77,7 @@ class Photo {
                 matrix, true
             )
         }
+
         //Loads a rotated bitmap from an image path
         fun loadRotatedBitmap(path: String, options: BitmapFactory.Options?): Bitmap {
             val bitmap = BitmapFactory.decodeFile(path, options)

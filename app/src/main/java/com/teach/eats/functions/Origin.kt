@@ -9,7 +9,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import java.io.InputStream
 import java.net.URL
 
-
+//Asynchronously loads the origin image from the url and sets the image for ImageView
 class Origin(private val bmImage: ImageView, private val shimmerView: ShimmerFrameLayout) : AsyncTask<String?, Void?, Bitmap?>() {
     override fun doInBackground(vararg params: String?): Bitmap? {
         val urldisplay = params[0]

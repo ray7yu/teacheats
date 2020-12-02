@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.teach.eats.functions.Photo
 import com.teach.eats.R
+import com.teach.eats.databinding.FragmentColorBinding
 import com.teach.eats.databinding.FragmentResultBinding
 import java.io.IOException
 import java.io.OutputStream
@@ -40,14 +41,8 @@ class ResultFragment : Fragment() {
             container,
             false
         )
-        results = Bundle()
-        if(savedInstanceState != null) {
-            results.putString("label", savedInstanceState.getString("label", ""))
-            results.putString("photoPath", savedInstanceState.getString("photoPath", ""))
-        } else {
-            results.putString("label", requireArguments().getString("label", ""))
-            results.putString("photoPath", requireArguments().getString("photoPath", ""))
-        }
+        results = setResult(savedInstanceState)
+
         //Custom back pressed callback that also deletes photo
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -77,16 +72,8 @@ class ResultFragment : Fragment() {
         //Label is set using Photo class
         Photo.getLabel(binding, results)
 
-        //Pressing return button will delete image and return to title fragment
-        binding.resultReturnButton.setOnClickListener { view: View ->
-            Photo.deleteImage(results)
-            view.findNavController().navigate(R.id.action_resultFragment_to_titleFragment)
-        }
-        //Pressing learn will go to food name fragment, while passing bundle
-        binding.learnButton.setOnClickListener { view: View ->
-            view.findNavController()
-                .navigate(R.id.action_resultFragment_to_foodNameFragment, results)
-        }
+        setUpNavigation(binding)
+
         binding.saveButton.setOnClickListener {
             savePicture()
         }
@@ -97,11 +84,42 @@ class ResultFragment : Fragment() {
         }
         return binding.root
     }
+
+    //Saves the arguments when fragment is stopped
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("label", results.getString("label"))
         outState.putString("photoPath", results.getString("photoPath"))
     }
+
+    //Sets up the navigation between fragments
+    private fun setUpNavigation(binding: FragmentResultBinding) {
+        //Pressing return button will delete image and return to title fragment
+        binding.resultReturnButton.setOnClickListener { view: View ->
+            Photo.deleteImage(results)
+            view.findNavController().navigate(R.id.action_resultFragment_to_titleFragment)
+        }
+        //Pressing learn will go to food name fragment, while passing bundle
+        binding.learnButton.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(R.id.action_resultFragment_to_foodNameFragment, results)
+        }
+    }
+
+    //Restores or initializes the arguments when fragment is started
+    private fun setResult(savedInstanceState: Bundle?) : Bundle {
+        val result = Bundle()
+        if(savedInstanceState != null) {
+            result.putString("label", savedInstanceState.getString("label", ""))
+            result.putString("photoPath", savedInstanceState.getString("photoPath", ""))
+        } else {
+            result.putString("label", requireArguments().getString("label", ""))
+            result.putString("photoPath", requireArguments().getString("photoPath", ""))
+        }
+        return result
+    }
+
+    //Saves the picture to phone gallery
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun savePicture(){
         val photoPath = results.getString("photoPath").toString()

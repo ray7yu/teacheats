@@ -16,6 +16,7 @@ import io.grpc.Channel
 import java.io.File
 import java.nio.file.Files
 
+//Asynchronously makes a call to the Clarifai API in order to classify the fruit image and obtain a label.
 class Clarifai(
     private val apiKey: String,
     private val binding: FragmentLoadingBinding,

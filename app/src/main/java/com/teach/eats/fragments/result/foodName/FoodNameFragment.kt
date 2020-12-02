@@ -13,7 +13,9 @@ import androidx.navigation.findNavController
 import com.teach.eats.functions.Learn
 import com.teach.eats.functions.Photo
 import com.teach.eats.R
+import com.teach.eats.databinding.FragmentColorBinding
 import com.teach.eats.databinding.FragmentFoodNameBinding
+import com.teach.eats.fragments.result.color.ColorFragment
 
 class FoodNameFragment : Fragment() {
     private lateinit var results : Bundle
@@ -29,14 +31,8 @@ class FoodNameFragment : Fragment() {
             container,
             false
         )
-        results = Bundle()
-        if(savedInstanceState != null) {
-            results.putString("label", savedInstanceState.getString("label", ""))
-            results.putString("photoPath", savedInstanceState.getString("photoPath", ""))
-        } else {
-            results.putString("label", requireArguments().getString("label", ""))
-            results.putString("photoPath", requireArguments().getString("photoPath", ""))
-        }
+        results = setResult(savedInstanceState)
+
         //Custom back pressed callback that also deletes photo
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -51,12 +47,25 @@ class FoodNameFragment : Fragment() {
                 }
             }
         )
+        setUpUI(this, binding)
+        setUpNavigation(binding)
+        return binding.root
+    }
+    //Saves the arguments when fragment is stopped
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("label", results.getString("label"))
+        outState.putString("photoPath", results.getString("photoPath"))
+    }
+
+    //Sets up the UI for the fragment
+    private fun setUpUI(foodNameFragment: FoodNameFragment, binding: FragmentFoodNameBinding){
         //Sets up food picture and food name views
         Learn.chooseIcon(
             binding.foodPic,
             results.getString("label").toString()
         )
-        this.context?.let {
+        foodNameFragment.context?.let {
             Learn.chooseText(
                 it,
                 binding.foodNameView,
@@ -66,7 +75,7 @@ class FoodNameFragment : Fragment() {
         }
 
         //Sets up audio for listen button
-        this.context?.let {
+        foodNameFragment.context?.let {
             Learn.setSound(
                 it,
                 binding.listenButton,
@@ -74,8 +83,10 @@ class FoodNameFragment : Fragment() {
                 0
             )
         }
+    }
 
-        //Navigation for buttons
+    //Sets up the navigation between fragments
+    private fun setUpNavigation(binding: FragmentFoodNameBinding) {
         binding.leftButton.setOnClickListener { view: View ->
             view.findNavController()
                 .navigate(R.id.action_foodNameFragment_to_resultFragment, results)
@@ -88,11 +99,18 @@ class FoodNameFragment : Fragment() {
             Photo.deleteImage(results)
             view.findNavController().navigate(R.id.action_foodNameFragment_to_titleFragment)
         }
-        return binding.root
     }
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("label", results.getString("label"))
-        outState.putString("photoPath", results.getString("photoPath"))
+
+    //Restores or initializes the arguments when fragment is started
+    private fun setResult(savedInstanceState: Bundle?) : Bundle {
+        val result = Bundle()
+        if(savedInstanceState != null) {
+            result.putString("label", savedInstanceState.getString("label", ""))
+            result.putString("photoPath", savedInstanceState.getString("photoPath", ""))
+        } else {
+            result.putString("label", requireArguments().getString("label", ""))
+            result.putString("photoPath", requireArguments().getString("photoPath", ""))
+        }
+        return result
     }
 }

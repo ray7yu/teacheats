@@ -58,6 +58,7 @@ class TitleFragment : Fragment() {
     }
 
     lateinit var currentPhotoPath: String
+
     //Creates a file and filepath for the image
     @Throws(IOException::class)
     private fun createImageFile(): File {
@@ -87,7 +88,7 @@ class TitleFragment : Fragment() {
         photoFile?.also {
             val photoURI: Uri = FileProvider.getUriForFile(
                 requireActivity(),
-                "com.example.android.fileprovider",
+                "com.teach.eats.fileprovider",
                 it
             )
             getPicture.launch(photoURI)

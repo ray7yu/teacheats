@@ -35,6 +35,7 @@ class LoadingFragment : Fragment() {
         System.loadLibrary("native-lib")
     }
 
+    //Native C++ functions that contain API ID and Secret
     external fun getApiSecret(): String
     external fun getApiId(): String
 }
