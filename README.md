@@ -7,11 +7,9 @@
   <p align="center">
   An android application, written in Kotlin, that uses the Clarifai API to identify images of fruits and hosts educational pages geared towards children.
     <br />
-    ·
     <a href="https://github.com/ray7yu/laundr-portal/issues">Report Bug</a>
     ·
     <a href="https://github.com/ray7yu/laundr-portal/issues">Request Feature</a>
-    .
   </p>
 </p>
 
@@ -35,7 +33,7 @@
 ### Background
 
 This project was developed as a part of the WiCSE @ UF Shadowing Program during Fall 2020. Under the guidance of a corporate mentor from Traject, I had to develop an application over the course of the semester. </br> </br>
-Tasks: 
+<b>Tasks:</b>
 * Sketch wireframe to plan app structure
 * Collaborate with student artist to develop the UI
 * Create a timeline for app milestones
@@ -75,10 +73,10 @@ The goal of the project was to develop a mobile application that is designed to 
 <!-- USAGE EXAMPLES -->
 ## Usage
  1. Take Picture of Fruit:
- <img src="ReadmeIMG/login.png" alt="Logo" width="600" height="300">
+ <img src="assets/result.png" alt="Result" width="100" height="300">
  
  2. Educational pages about respective fruit:
- <img src="ReadmeIMG/dashboard.png" alt="Logo" width="600" height="300">
+ <img src="assets/fruit.png" alt="Fruit" width="100" height="300">
  
  3. App layout:
  <img src="assets/skeleton.png" alt="Layout" width="900" height="300">
