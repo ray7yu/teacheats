@@ -73,10 +73,10 @@ The goal of the project was to develop a mobile application that is designed to 
 <!-- USAGE EXAMPLES -->
 ## Usage
  1. Take Picture of Fruit:
- <img src="assets/result.png" alt="Result" width="100" height="300">
+ <img src="assets/result.jpg" alt="Result" width="150" height="300">
  
  2. Educational pages about respective fruit:
- <img src="assets/fruit.png" alt="Fruit" width="100" height="300">
+ <img src="assets/fruit.jpg" alt="Fruit" width="150" height="300">
  
  3. App layout:
  <img src="assets/skeleton.png" alt="Layout" width="900" height="300">
