@@ -51,6 +51,7 @@
             android:layout_marginTop="8dp"
             android:src="@drawable/listen"
             android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             android:textAllCaps="false"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"

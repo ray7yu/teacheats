@@ -58,6 +58,7 @@
             android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:src="@drawable/listen"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

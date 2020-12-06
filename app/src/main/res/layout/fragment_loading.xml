@@ -39,14 +39,15 @@
 
         <ImageView
             android:id="@+id/tradeCharacter"
-            android:layout_width="105dp"
-            android:layout_height="140dp"
+            android:layout_width="125dp"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/trade_character"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.253"
+            app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.69" />
+            app:layout_constraintVertical_bias="0.75" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
