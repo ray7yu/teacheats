@@ -55,6 +55,35 @@ The goal of the project was to develop a mobile application that is designed to 
 * [Hamcrest](http://hamcrest.org/)
 * [AWS S3](https://aws.amazon.com/s3/)
 
+### Fruit List
+* Apple
+* Avocado
+* Banana
+* Blueberry
+* Cherry
+* Coconut
+* Dragonfruit
+* Durian
+* Grape
+* Grapefruit
+* Guava
+* Kiwi
+* Lemon
+* Lime
+* Lychee
+* Mango
+* Orange
+* Papaya
+* Passionfruit
+* Peach
+* Pear
+* Persimmon
+* Pineapple
+* Pomegranate
+* Raspberry
+* Strawberry
+* Watermelon
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
